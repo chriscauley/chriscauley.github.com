@@ -1,0 +1,26 @@
+#serpinski-triangle {
+  background: #EEEE00;
+  height: 200px !important;
+  width: 200px !important;
+  overflow: hidden;
+  position: relative;
+}
+#serpinski-triangle div {
+  height: 50%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+}
+#serpinski-triangle:before, #serpinski-triangle div:before {
+  background: black;
+  bottom: 0;
+  content:"";
+  display: block;
+  height: 141.421356237%;
+  left: 0;
+  position: absolute;
+  width: 70.710678118%;
+  -webkit-transform: rotate(45deg);
+  -webkit-transform-origin: 0 100%;
+}
