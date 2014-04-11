@@ -34,6 +34,6 @@ A pure css Serpinski Triangle I made. Normally pure css trangles are made using 
 However, because borders can't be percentages, this doesn't work for a simple fractal triangle. As a result I had to use square, rotated pseudo elements. The parent of the pseudo element is overflow hidden. Here's the full CSS. Feel free to email me if you want to know more.
 
 {% highlight css %}
-{% include project-assets/serpinski.css %}
+{% include projects/serpinski/serpinski.css %}
 {% endhighlight %}
 
