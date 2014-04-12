@@ -4,32 +4,9 @@ title: Fractal CSS
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+## Hello www
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
-
-## Update Author Attributes
-
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
-
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
-
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
-
-    $ rm -rf _posts/core-samples
-
-Here's a sample "posts list".
+I'm a former Chemist turned web developer. I currently work at [6ft Studios](http://6ft.com) and am the secretary at the local hackerspace, [TX/RX Labs](http://txrxlabs.org "Houston's Hackerspace") where I make the web page and teach programming classes. This blog is mostly just to showcase stuff I do in my spare time. More to come.
 
 <ul class="posts">
   {% for post in site.posts %}
