@@ -16,7 +16,7 @@ author :
   github : chriscauley
 
 production_url : http://chriscauley.github.io
-
+markdown: kramdown
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :

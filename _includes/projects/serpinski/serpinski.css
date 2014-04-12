@@ -1,9 +1,10 @@
 #serpinski-triangle {
   background: #EEEE00;
-  height: 200px !important;
-  width: 200px !important;
+  height: 300px !important;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
+  width: 300px !important;
 }
 #serpinski-triangle div {
   height: 50%;

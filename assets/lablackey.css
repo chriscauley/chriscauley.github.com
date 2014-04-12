@@ -1,0 +1,20 @@
+.CodeWidget {
+  position: relative;
+}
+.CodeWidget > .content { display: none; }
+
+.CodeWidget [type=radio] { display: none; }
+.CodeWidget [type=radio]:checked + .content { display: block; }
+.CodeWidget .labels label {
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  margin-right: 10px;
+}
+.CodeWidget .labels label:after {
+  content: attr(class);
+}
+.CodeWidget .labels label.demo { color: inherit }
+.CodeWidget .labels label.html { color: #d14; }
+.CodeWidget .labels label.css { color: #66d9ef; }
