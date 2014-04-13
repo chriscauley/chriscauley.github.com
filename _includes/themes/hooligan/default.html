@@ -2,12 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>
-      {% if page.title %}
-        {{ page.title }} - 
-      {% endif %}
-      {{ site.title }}
-    </title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
     <meta name="author" content="{{ site.author.name }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,17 +10,16 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <link href="/assets/images/favicon.png" type="image/png" rel="icon" />
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css-social-buttons/css/zocial.stripped.css">
+    <link href="{{ ASSET_PATH }}/css-social-buttons/css/zocial.stripped.css" rel="stylesheet" type="text/css">
     <link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="/assets/lablackey.css" rel="stylesheet" type="text/css" media="all">
     <!-- fav and touch icons -->
     <!-- Update these with your own images
-      <link rel="shortcut icon" href="images/favicon.ico">
       <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
       <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
       <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
