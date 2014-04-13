@@ -1,0 +1,54 @@
+#golden3 {
+  height: 371px;
+  left: 0;
+  position: relative;
+  width: 600px;
+}
+
+@media (max-width: 980px) { #golden3 { height: 290px; width: 470px; } }
+@media (max-width: 530px) { #golden3 { height: 160px; width: 258px; } }
+
+#golden3 div > div {
+  -webkit-filter: hue-rotate(120deg);
+  filter: hue-rotate(120deg);
+  height: 61.8%;
+  left: 100%;
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: top left;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  top: 0;
+  width: 61.8%;
+  z-index: 100;
+}
+
+#golden3 div:before, #golden3 div:after {
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+#golden3 div:before {
+  background: #66d9ef;
+  border-radius: 100% 0 0 0;
+  box-shadow: inset 12px 0px 15px #e6db74;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 61.8%;
+  z-index: 2;
+}
+
+#golden3 div:after {
+  background: #d14;
+  width: 100%;
+  z-index: 1;
+}
+
+#golden3 div:hover div:not(:hover) {
+  -webkit-filter: hue-rotate(0deg);
+  filter: hue-rotate(0deg);  
+}

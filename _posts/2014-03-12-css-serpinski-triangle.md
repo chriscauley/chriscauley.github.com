@@ -3,7 +3,7 @@ layout: post
 title: "CSS Serpinski Triangle"
 description: ""
 category: 
-tags: []
+tags: [css,fractals]
 ---
 {% include JB/setup %}
 

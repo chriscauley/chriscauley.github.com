@@ -1,0 +1,36 @@
+#golden2 { overflow: visible; }
+#golden2 > div {
+  height: 191px;
+  left: 0;
+  position: relative;
+  width: 309px;
+}
+
+#golden2 div {
+  background: #999;
+  outline: 1px black solid;
+}
+
+#golden2 div > div {
+  height: 61.8%;
+  left: 100%;
+  position: absolute;
+  -webkit-transform: rotate(0deg);
+  -webkit-transform-origin: top left;
+  -webkit-transition: -webkit-transform ease-in 1s;
+  transform: rotate(0deg);
+  transform-origin: top left;
+  transition: transform ease-in 1s;
+  top: 0;
+  width: 61.8%;
+  z-index: 100;
+}
+
+#golden2 div:hover {
+  background: #FFc;
+}
+
+#golden2 div:hover > div {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
