@@ -38,3 +38,12 @@
     max-width: 100%;
   }
 }
+
+.table-striped {
+  border: 1px solid;
+  margin-bottom: 3em;
+}
+
+.table-striped td {
+  padding: 10px;
+}
