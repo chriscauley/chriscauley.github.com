@@ -13,7 +13,7 @@ For this class we'll be using IDLE, a simple python interface that allows you to
 -->
 # 0 - About this class
 
-This class is based off the book [Invent Your Own Computer Games with Python(http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You'll want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
+This class is based off the book [Invent Your Own Computer Games with Python](http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You'll want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
 
 # 1 - Math and Variables
 
