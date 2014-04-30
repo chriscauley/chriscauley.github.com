@@ -313,3 +313,67 @@ Here you can see that 16 is considered `True` as far as conditionals are concern
 
 Values can be compared using a number of boolean operators. All of the following examples evaluate as `True`.
 
+<table class="table-striped">
+  <tr>
+    <td>Operator</td><td>Example</td><td>How Example is Read</td>
+  </tr>
+  <tr>
+    <td>&gt;</td><td>4 &gt; 2</td><td>"Four is greater than two"</td>
+  </tr>
+  <tr>
+    <td>&lt;</td><td>1 &lt; 2</td><td>"Two is less than Four"</td>
+  </tr>
+  <tr>
+    <td> == </td><td>2 == 2</td><td>"Two is equal to two"</td>
+  </tr>
+  <tr>
+    <td> == </td><td>2 != 1</td><td>"Two is not equal to one"</td>
+  </tr>
+</table>
+
+These operators can be used with almost any data type, but in practice only equality and in equality are terribly useful for strings.
+
+{% highlight python %}
+# Ask the user for a password and 
+password = "my_secret1!1"
+password2 = raw_input("What's the password: ")
+if password2 == password:
+    print "Correct!"
+if password2 != password:
+    print "Fail!"
+{% endhighlight %}
+
+## Functions
+
+A function is a mini-program within a program. We've already seen the funciton `raw_input()` and `int()` and `str()`. Each of these take in one argument and return an argument. Writing your own functions can simplify code and make programming much less repetative. For example, we know how to use `raw_input()` and `int()` to get a number from a user and turn it into an integer instead of a string. We can turn this into a new function as follows:
+
+{% highlight python %}
+def square(number):
+    return number*number
+
+def number_input(prompt):
+    number = raw_input(prompt)
+    return int(number)
+{% endhighlight %}
+
+The value in parenthesis is called the argument of a funciton. Each of the above functions have one argument, but a function can have as many arguments as desired. 
+
+{% highlight python %}
+def bigger_of_two(a,b):
+    if a > b:
+        return a
+    return b
+
+def display_welcome():
+    print "Welcome to my program."
+{% endhighlight %}
+
+Notice that in the `bigger_of_two` function there is no `if b < a` necessary. This is because if `a` is larger than `b`, the function `return a`, thus immediately exiting the program. Even if the `return` is inside of a `while` loop or multiple `if` statements, the `return` will cause the function to close.
+
+Also note that the `display_welcome` program doesn't have a `return` statement. When the indentation ends, the funciton automatically terminates returning `None`.
+
+{% highlight python %}
+{% endhighlight %}
+
+{% highlight python %}
+{% endhighlight %}
