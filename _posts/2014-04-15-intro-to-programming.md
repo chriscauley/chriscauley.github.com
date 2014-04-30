@@ -372,8 +372,20 @@ Notice that in the `bigger_of_two` function there is no `if b < a` necessary. Th
 
 Also note that the `display_welcome` program doesn't have a `return` statement. When the indentation ends, the funciton automatically terminates returning `None`.
 
-{% highlight python %}
-{% endhighlight %}
+## Exercises
 
-{% highlight python %}
-{% endhighlight %}
+1. Write an `is_even(number)` function that returns `True` if a number is divisible by 2 and `False` if it is not.
+
+2. For the super lazy, write an `is_odd(number)` function that uses the above function to tell if a number is NOT divisible by 2.
+
+3. Write an `is_any_odd(some_list)` function that returns `True` if it finds any odd numbers in a list.
+
+4. Write a `check_sum(some_string,digit)` function that does the following:
+
+- cycle through a string, add all numbers (individual digits) in the string together. 
+
+- ignore any non numeric numbers.
+
+- `return True` if the last digit in the sum of all numbers is equal to the digit argument (hint: use `last_digit = my_sum%10`)
+
+- Otherwise `return False`.

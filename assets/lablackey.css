@@ -54,3 +54,4 @@ h1:first-child { margin-top: 25px; }
 pre {
   margin-bottom: 50px;
 }
+p code { white-space: pre; }

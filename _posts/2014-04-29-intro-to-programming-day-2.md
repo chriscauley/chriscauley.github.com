@@ -201,5 +201,21 @@ def number_input(prompt):
 
 # 3 - Hangman!
 
-And now, two days into the class, we finally have all to tools to write a somewhat interesting program. This is going to consist of two files, a library of functions we'll use and a program that uses those tools to play hangman. Let's start with the latter, a file we'll call `hangman.py`
+And now, two days into the class, we finally have all to tools to write a somewhat interesting program. This is going to consist of two files, a library of functions we'll use and a program that uses those tools to play hangman. Let's start with the latter, a file we'll call `hangman.py`.
+
+{% highlight python %}
+{% include hangman.py %}
+{% endhighlight %}
+
+This imports from various functions from `utils.py`.
+
+{% highlight python %}
+{% include utils.py %}
+{% endhighlight %}
+
+Which uses a few very long but boring variables I moved to `var.py`.
+
+{% highlight python %}
+{% include var.py %}
+{% endhighlight %}
 
