@@ -203,11 +203,3 @@ def number_input(prompt):
 
 And now, two days into the class, we finally have all to tools to write a somewhat interesting program. This is going to consist of two files, a library of functions we'll use and a program that uses those tools to play hangman. Let's start with the latter, a file we'll call `hangman.py`
 
-{% highlight python %}
-{% include hangman.py %}
-{% endhighlight %}
-
-{% highlight python %}
-{% include hangman.py %}
-{% endhighlight %}
-
