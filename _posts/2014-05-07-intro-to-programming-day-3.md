@@ -118,5 +118,7 @@ This is useful because we can now make a new `class Sphere` that inherits from `
 {% highlight python %}
 {% include geo2.py %}
 {% endhighlight %}
+
 {% highlight python %}
+
 {% endhighlight %}
