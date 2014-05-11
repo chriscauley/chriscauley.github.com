@@ -193,7 +193,6 @@ GameManager.prototype.move = function (direction) {
           // The mighty 2048 tile
           if (merged.value === 2048) { self.won = true; }
           if (merged.value > 255) {
-            console.log(merged)
             self.autoSave = true;
           }
         } else {

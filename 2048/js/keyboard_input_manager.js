@@ -149,7 +149,6 @@ KeyboardInputManager.prototype.loadManuSave = function (event) {
 
 KeyboardInputManager.prototype.manuSave = function (event) {
   event.preventDefault();
-  console.log('hooray')
   this.emit("manuSave");
 };
 
@@ -159,7 +158,6 @@ KeyboardInputManager.prototype.keepPlaying = function (event) {
 };
 
 KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
-  console.log(selector)
   var button = document.querySelector(selector);
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));

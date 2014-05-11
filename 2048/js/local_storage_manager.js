@@ -56,13 +56,11 @@ LocalStorageManager.prototype.getGameState = function (key) {
 };
 
 LocalStorageManager.prototype.setGameState = function (gameState,key) {
-  if (key) { console.log('setting '+key); }
   key = key || this.gameStateKey;
   this.storage.setItem(key, JSON.stringify(gameState));
 };
 
 LocalStorageManager.prototype.clearGameState = function (key) {
   key = key || this.gameStateKey;
-  console.log('clearing '+key);
   this.storage.removeItem(key);
 };
