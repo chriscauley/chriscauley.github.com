@@ -7,13 +7,29 @@ tags: [programming,python,educational]
 ---
 {% include JB/setup %}
 
-<!--## 1 - The Interactive Shell #! TODO: this section sucks
+## 0 - Introduction
 
-For this class we'll be using IDLE, a simple python interface that allows you to quickly run and test code. IDLE consists of two windows, an editor (for writing code) and an interactive prompt (for running code). Code written in the editor can be tested at any time by pressing F5 or selecting the run command from the window menus. From the computers perspective there is no difference between selecting run in the editor and typing it directly into the prompt. But using the editor allows you to save changes to your code to quickly re-run it whenever needed.
--->
-# 0 - About this class
+### Why we program
 
-This class is based off the book [Invent Your Own Computer Games with Python](http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You'll want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
+* Humans make mistakes when repeating simple actions, computers do not. Computers also do these things much more quickly than we can.
+
+* Smarter people have solved problems, computers give us access to those solutions.
+
+* Once you write a program, you can pass it onto others (or your future self).
+
+### Why python
+
+* Very readable, very "human friendly".
+
+* Batteries included (common problems are already solved in advance).
+
+* Strong community (others solve problems so you don't have to).
+
+* Open source is amazing.
+
+* Object oriented, customizable.
+
+Much of the material here is lifted from [Invent Your Own Computer Games with Python](http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You'll want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
 
 # 1 - Math and Variables
 
@@ -63,6 +79,14 @@ Order of operations is the same in python as in math, evaluating from left to ri
 
 As you can see, the spacing doesn't matter when writing these expressions. Typically one space is put between every number and operator so that the code is easy to read, but this is not a requirement. The only rule (for now) on spacing is that you can't add spacing to the begining of the line. We'll explain this as the class goes on.
 
+### Excercises
+
+Try each of the following by typing them into the interpreter.
+
+1. 6+4*10
+
+2. (6+4)*10 (Compare this to #1, and note that Python uses parentheses just like you would in normal math to determine order of operations!)
+
 ## Variables
 
 Computers store values in memory for later usage. In order for humans to reference values and remeber what they represent, we name the values. Try the following:
@@ -103,35 +127,49 @@ The last few lines are very important. Unlike the value of `4` or `9` or `867530
 
 Variable names can any combination of letters, numbers and underscores as long as the first character is NOT a number. Other characters (spaces, periods, etc) cannot be used as variable names.
 
+### Exercise
+
+What is the value of x after entering in the following lines? Try to figure it out in your head before trying it in the interpreter.
+
+{% highlight python %}
+x = 1
+y = 2
+z = x + y
+x = y + 2
+z = y * 5
+x = 4
+y = x * z + 15
+{% endhighlight %}
+
 # 2 - Strings
 
 In python, any series of characters surrounded by quotation marks or apostrophes is considered a string. Strings can be added with the `+` operator, and for strings this is called "concatenation". Here are some examples of how strings and integers interact.
 
 {% highlight python %}
 >>> name = "Chris"
->>> print "Hello" + name #1
+>>> print("Hello" + name) #1
 HelloChris
 
->>> print "Hello " + name + ". How are you?"
+>>> print("Hello " + name + ". How are you?")
 Hello Chris. How are you?
 
->>> print "one\ttwo\tthree\n1\t\2\t3" #2
-one       two       three
+>>> print("one\ttwo\tthree\n1\t\2\t3") #2
+one     two     three
 1       2       3
 
 >>> people_in_car = 4
->>> print "There are " + people_in_car + " people in the car." #3
+>>> print("There are " + people_in_car + " people in the car.") #3
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: cannot concatenate 'str' and 'int' objects
 
->>> print "There are " + str(people_in_car) + " people in the car." #4
+>>> print("There are " + str(people_in_car) + " people in the car.") #4
 There are 4 people in the car.
 
->>> print 1 + int("2")
+>>> print(1 + int("2"))
 3
 
->>> print str(1) + "2"
+>>> print(str(1) + "2")
 12
 
 >>> int("two") #5
@@ -144,7 +182,7 @@ There are several important things here. First off the comment. Any code after a
 
 1)  You strings are added together EXACTLY as they are typed. If you want to have spaces, you must specify them.
 
-2) Certain characters that can't be typed can be make with escape characters. This is slash followed by the escape character. Here we use `\t` for a tab and `\n` for a line break.
+2) Certain characters that can't be typed can be make with escape characters. This is backslash followed by the escape character. Here we use `\t` for a tab and `\n` for a line break. Other important characters are `\"` and `\'` which allow you to put a quote or an apostrophe in a string and `\\` which represents a literal backslash.
 
 3) In Python you cannot add strings and integers together. You can in some languages, but in Python it will raise a `TypeError` meaning you tried to do something with the wrong `type` of variable.
 
@@ -152,9 +190,33 @@ There are several important things here. First off the comment. Any code after a
 
 5) Some strings cannot be converted to integers. These will raise a `VauleError` because a bad value was provided.
 
+### Exercises:
+
+1. Create a string with an apostrophe, such as: I can't figure out this problem
+
+2. Create a string with both single and double quotes in the string. 
+
+3. Try to figure out each of the following before typing them in
+
+{% highlight python %}
+'one plus one is ' + '1' + '1'
+
+'Na na ' * 8 + 'batman!'
+
+'I' + 'love' + 'bees'
+{% endhighlight %}
+
+4. What's wrong with the following example:
+
+{% highlight python %}
+brothers_age = 21
+my_age = 23
+print("I am " + my_age - brothers_age + " years older than my brother.")
+{% endhighlight %}
+
 #3 - The `raw_input` Function
 
-Another `type` in python is the function. A function takes in any number of arguments (variables passed into the function) and returns a value. You've already seen two functions above, the `int` and `str` functions that take in any type and returns a new variable corresponding to the type you asked for. `print` is similar to a function but without the parentheses. In python 3 `print` is actually a function, so if you see `print(some_value)` then you're probably in a python 3 tutorial.
+Another `type` in python is the function. A function takes in any number of arguments (variables passed into the function) and returns a value. You've already seen two functions above, the `int` and `str` functions that take in any type and returns a new variable corresponding to the type you asked for.
 
 The `raw_input(some_string)` function prints the argument you give it and then waits for the user to enter in any code via the keyboard. When the user hits enter, `raw_input` then returns the value entered in as a string.
 
@@ -162,14 +224,14 @@ The `raw_input(some_string)` function prints the argument you give it and then w
 >>> name = raw_input("Type your name and press enter: ") #1
 Type your name and press enter: Chris
 
->>> print "Hello " + name + "! I hope you are feeling well."
+>>> print("Hello " + name + "! I hope you are feeling well.")
 Hello Chris! I hope you are feeling well.
 
 >>> age = raw_input("How old are you? ")
 How old are you? 30
 
 >>> seconds = int(age) * 365 * 24 * 60 * 60 #2
->>> print "That's " + str(seconds) + " seconds. Make every one count!"
+>>> print("That's " + str(seconds) + " seconds. Make every one count!")
 {% endhighlight %}
 
 1) I copied and pasted this from my python terminal so this is how it should look AFTER someone types in "Chris" and presses enter.
@@ -271,9 +333,9 @@ Programming relies heavily on flow control - the ability to move between parts o
 
 {% highlight python %}
 while True:
-    print "This will never stop!"
+    print("This will never stop!")
 
-print "This will never happen"
+print("This will never happen")
 {% endhighlight %}
 
 The first print command is inside the while loop because it is indented 4 spaces (other languages usually wrap this code in braces, `{}`). Because the part between the `while` and the colon is the conditional. Since `True` is always `True`, it never stops!
@@ -286,14 +348,14 @@ Another type of programming block is the `if` statement. Just like the `while` s
 
 {% highlight python %}
 if True:
-    print "This will always print"
+    print("This will always print")
 
 if False:
-    print "This will never print"
+    print("This will never print")
 
 my_variable = random.randint(0,1)
 if my_variable == 1:
-    print "This will print half of the time"
+    print("This will print half of the time")
 {% endhighlight %}
 
 ## Conditionals and Booleans
@@ -303,10 +365,10 @@ if my_variable == 1:
 {% highlight python %}
 students = 16
 if students:
-    print "There are students"
+    print("There are students")
 
 if bool(students):
-    print "There are not students"
+    print("There are not students")
 {% endhighlight %}
 
 Here you can see that 16 is considered `True` as far as conditionals are concerned. For integers, any integer except 0 will be considered `True`. For strings, any string except an empty string, `""`, is considered `True`.
@@ -338,9 +400,9 @@ These operators can be used with almost any data type, but in practice only equa
 password = "my_secret1!1"
 password2 = raw_input("What's the password: ")
 if password2 == password:
-    print "Correct!"
+    print("Correct!")
 if password2 != password:
-    print "Fail!"
+    print("Fail!")
 {% endhighlight %}
 
 ## Functions
@@ -365,7 +427,7 @@ def bigger_of_two(a,b):
     return b
 
 def display_welcome():
-    print "Welcome to my program."
+    print("Welcome to my program.")
 {% endhighlight %}
 
 Notice that in the `bigger_of_two` function there is no `if b < a` necessary. This is because if `a` is larger than `b`, the function `return a`, thus immediately exiting the program. Even if the `return` is inside of a `while` loop or multiple `if` statements, the `return` will cause the function to close.
