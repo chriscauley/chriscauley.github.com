@@ -23,13 +23,13 @@ tags: [programming,python,educational]
 
 * Batteries included (common problems are already solved in advance).
 
-* Strong community (others solve problems so you don't have to).
+* Strong community (others solve problems so you do not have to).
 
 * Open source is amazing.
 
 * Object oriented, customizable.
 
-Much of the material here is lifted from [Invent Your Own Computer Games with Python](http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You'll want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
+Much of the material here is lifted from [Invent Your Own Computer Games with Python](http://inventwithpython.com/chapters/) and if you are lost more detailed explanations can be found there. You will want to install python 2.7.6 for windows (first link [here](https://www.python.org/downloads/windows/)  ) or type `python` in a mac or Linux terminal to get started.
 
 # 1 - Math and Variables
 
@@ -42,7 +42,7 @@ Open the interactive prompt and type `2+2`. Python evaluates this expression and
 4
 {% endhighlight %}
 
-If you don't see the `>>>` characters then you're most likely in the editor not the prompt.
+If you do not see the `>>>` characters then you are most likely in the editor not the prompt.
 
 In python, arithmatic uses the following operators:
 
@@ -77,7 +77,7 @@ Order of operations is the same in python as in math, evaluating from left to ri
 18
 {% endhighlight %}
 
-As you can see, the spacing doesn't matter when writing these expressions. Typically one space is put between every number and operator so that the code is easy to read, but this is not a requirement. The only rule (for now) on spacing is that you can't add spacing to the begining of the line. We'll explain this as the class goes on.
+As you can see, the spacing does not matter when writing these expressions. Typically one space is put between every number and operator so that the code is easy to read, but this is not a requirement. The only rule (for now) on spacing is that you can not add spacing to the begining of the line. We will explain this as the class goes on.
 
 ### Excercises
 
@@ -99,7 +99,7 @@ Computers store values in memory for later usage. In order for humans to referen
 >>>
 {% endhighlight %}
 
-Notice that the in the second line, the `4` wasn't printed afterwards. This is because the interactive prompt stored it as the variable `count`. If you don't store it as a variable, the prompt assumes that you want to see the answer (otherwise the value is lost and typing `2+2` accomplishes nothing). `count` now has a value of `4` and can be used anywhere a number can be used.
+Notice that the in the second line, the `4` was not printed afterwards. This is because the interactive prompt stored it as the variable `count`. If you do not store it as a variable, the prompt assumes that you want to see the answer (otherwise the value is lost and typing `2+2` accomplishes nothing). `count` now has a value of `4` and can be used anywhere a number can be used.
 
 {% highlight python %}
 >>> count
@@ -178,11 +178,11 @@ Traceback (most recent call last):
 ValueError: invalid literal for int() with base 10: 'two'
 {% endhighlight %}
 
-There are several important things here. First off the comment. Any code after a `#` is ignored by python. This allows you to leave notes for humans to read. It's used above to connect lines of code to these notes:
+There are several important things here. First off the comment. Any code after a `#` is ignored by python. This allows you to leave notes for humans to read. It is used above to connect lines of code to these notes:
 
-1)  You strings are added together EXACTLY as they are typed. If you want to have spaces, you must specify them.
+1)  You strings are added together EXACTLY as they are typed. If you want to have spaces, you must specify them. Also note the print function. Basically anything in side the parenthesis after `print` is displayed to the user. This will become very important once we start writing programs.
 
-2) Certain characters that can't be typed can be make with escape characters. This is backslash followed by the escape character. Here we use `\t` for a tab and `\n` for a line break. Other important characters are `\"` and `\'` which allow you to put a quote or an apostrophe in a string and `\\` which represents a literal backslash.
+2) Certain characters that can not be typed can be make with escape characters. This is backslash followed by the escape character. Here we use `\t` for a tab and `\n` for a line break. Other important characters are `\"` and `\'` which allow you to put a quote or an apostrophe in a string and `\\` which represents a literal backslash.
 
 3) In Python you cannot add strings and integers together. You can in some languages, but in Python it will raise a `TypeError` meaning you tried to do something with the wrong `type` of variable.
 
@@ -192,7 +192,7 @@ There are several important things here. First off the comment. Any code after a
 
 ### Exercises:
 
-1. Create a string with an apostrophe, such as: I can't figure out this problem
+1. Create a string with an apostrophe, such as: I can not figure out this problem
 
 2. Create a string with both single and double quotes in the string. 
 
@@ -206,7 +206,7 @@ There are several important things here. First off the comment. Any code after a
 'I' + 'love' + 'bees'
 {% endhighlight %}
 
-4. What's wrong with the following example:
+4. What is wrong with the following example:
 
 {% highlight python %}
 brothers_age = 21
@@ -216,7 +216,7 @@ print("I am " + my_age - brothers_age + " years older than my brother.")
 
 #3 - The `raw_input` Function
 
-Another `type` in python is the function. A function takes in any number of arguments (variables passed into the function) and returns a value. You've already seen two functions above, the `int` and `str` functions that take in any type and returns a new variable corresponding to the type you asked for.
+Another `type` in python is the function. A function takes in any number of arguments (variables passed into the function) and returns a value. You have already seen two functions above, the `int` and `str` functions that take in any type and returns a new variable corresponding to the type you asked for.
 
 The `raw_input(some_string)` function prints the argument you give it and then waits for the user to enter in any code via the keyboard. When the user hits enter, `raw_input` then returns the value entered in as a string.
 
@@ -240,7 +240,7 @@ How old are you? 30
 
 #4 Guess the number
 
-We now going to write a program called "Guess the number". It is best to write this in the editor and use the run option from the menu (if you're in IDLE) because unlike the above examples, this is a multi-line program. Guess the number has the following steps:
+We now going to write a program called "Guess the number". It is best to write this in the editor and use the run option from the menu (if you are in IDLE) because unlike the above examples, this is a multi-line program. Guess the number has the following steps:
 
 1) pick a random number
 
@@ -258,44 +258,57 @@ Here is the full program we will use (copied directly from the source material, 
 # This is a guess the number game.
 import random #4.1
 
-guesses_taken = 0 
-
 print('Hello! What is your name?')
 my_name = raw_input()
-
+guesses_taken = 0 
 number = random.randint(1, 20) #4.2
 print('Well, ' + my_name + ', I am thinking of a number between 1 and 20.')
 
-while guesses_taken < 6: #4.3
+while True: #4.3
     print('Take a guess.') # There are four spaces in front of print.
     guess = raw_input()
     guess = int(guess)
 
+    if guess > 20: #4.4
+        print("Bad guess, keep it below 20")
+        continue
+
+    if guess < 1:
+        print("The number must be greater than 1, try again")
+        continue
+
     guesses_taken = guesses_taken + 1
 
-    if guess < number: #4.4
+    if guess < number: 
         print('Your guess is too low.') # There are eight spaces in front of print.
 
     if guess > number:
         print('Your guess is too high.')
 
     if guess == number:
+        print('You got it!')
+        break
+
+    if guesses_taken > 5:
+        print("You're all out of guesses")
         break
 
 if guess == number:
     guesses_taken = str(guesses_taken)
-    print('Good job, ' + my_name + '! You guessed my number in ' + guesses_taken + ' guesses!')
-
-if guess != number:
+    congrats = 'Good job, ' + my_name + '! You guessed my number in ' + guesses_taken + ' guess'
+    if guesses_taken > 1:
+        congrats = congrats + "es"
+    print(congrats + "!")
+else:
     number = str(number)
-    print('Nope. The number I was thinking of was ' + number)
+    print('The number I was thinking of was ' + number)
 {% endhighlight %}
 
-There's a lot to cover here, so I will break it into sub sections.
+There is a lot to cover here, so I will break it into sub sections.
 
 ### 4.1 - `import` Statements
 
-If you had to write everything in one file, programming would become very tedious very quickly. In python, you can pull in code from other programs with import. Here you're importing a full module with `import module_name`. This imports an entire module of code that can be accessed by the module name followed by a period and then the name of the variable inside that module you want to access. You can also import only individual variables with the following syntax:
+If you had to write everything in one file, programming would become very tedious very quickly. In python, you can pull in code from other programs with import. Here you are importing a full module with `import module_name`. This imports an entire module of code that can be accessed by the module name followed by a period and then the name of the variable inside that module you want to access. You can also import only individual variables with the following syntax:
 
 {% highlight python %}
 import random
@@ -305,7 +318,7 @@ from random import randint
 number_2 = randint(0,20) # same as above, though not necessarily the same number
 {% endhighlight %}
 
-In various circumstances it is better to do this one way or another. Generally, if you want to import one or two things from a module you use `from module import var1, var2...` while if you want to import a lot of things you'll use `import module`.
+In various circumstances it is better to do this one way or another. Generally, if you want to import one or two things from a module you use `from module import var1, var2...` while if you want to import a lot of things you will use `import module`.
 
 ### 4.2 - The `random` module
 
@@ -344,7 +357,7 @@ In the our "Guess the number" game, `guesses_taken` starts out as 0 and gets lar
 
 ### 4.4 - `if` Statements
 
-Another type of programming block is the `if` statement. Just like the `while` statement, `if` starts takes in a conditional, followed by a conditional and a colon. Any code indented after `if conditional:` is inside the block. Since we're already in a while loop, the `if` block is indented 8 spaces instead of 4.
+Another type of programming block is the `if` statement. Just like the `while` statement, `if` starts takes in a conditional, followed by a conditional and a colon. Any code indented after `if conditional:` is inside the block. Since we re already in a while loop, the `if` block is indented 8 spaces instead of 4.
 
 {% highlight python %}
 if True:
@@ -407,7 +420,7 @@ if password2 != password:
 
 ## Functions
 
-A function is a mini-program within a program. We've already seen the funciton `raw_input()` and `int()` and `str()`. Each of these take in one argument and return an argument. Writing your own functions can simplify code and make programming much less repetative. For example, we know how to use `raw_input()` and `int()` to get a number from a user and turn it into an integer instead of a string. We can turn this into a new function as follows:
+A function is a mini-program within a program. We have already seen the funciton `raw_input()` and `int()` and `str()`. Each of these take in one argument and return an argument. Writing your own functions can simplify code and make programming much less repetative. For example, we know how to use `raw_input()` and `int()` to get a number from a user and turn it into an integer instead of a string. We can turn this into a new function as follows:
 
 {% highlight python %}
 def square(number):
@@ -432,7 +445,7 @@ def display_welcome():
 
 Notice that in the `bigger_of_two` function there is no `if b < a` necessary. This is because if `a` is larger than `b`, the function `return a`, thus immediately exiting the program. Even if the `return` is inside of a `while` loop or multiple `if` statements, the `return` will cause the function to close.
 
-Also note that the `display_welcome` program doesn't have a `return` statement. When the indentation ends, the funciton automatically terminates returning `None`.
+Also note that the `display_welcome` program does not have a `return` statement. When the indentation ends, the funciton automatically terminates returning `None`.
 
 ## Exercises
 
