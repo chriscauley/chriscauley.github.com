@@ -20,26 +20,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
   ...
   'social.apps.django_app.context_processors.backends',
   'social.apps.django_app.context_processors.login_redirect',
- )
+)
 
 # see step 2 for more info
 AUTHENTICATION_BACKENDS = (
-  #'social.backends.open_id.OpenIdAuth',
-  #'social.backends.google.GoogleOpenId',
+  'social.backends.facebook.FacebookOAuth2',
   'social.backends.google.GoogleOAuth2',
-  #'social.backends.google.GoogleOAuth',
   'social.backends.twitter.TwitterOAuth',
-  #'social.backends.yahoo.YahooOpenId',
   'django.contrib.auth.backends.ModelBackend',
 )
 
 #Step 3
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
 
 #step 4
-SOCIAL_AUTH_TWITTER_SECRET = ""
 SOCIAL_AUTH_TWITTER_KEY = ""
+SOCIAL_AUTH_TWITTER_SECRET = ""
+
+#step 4
+SOCIAL_AUTH_FACEBOOK_KEY = ""
+SOCIAL_AUTH_FACEBOOK_SECRET = ""
 {% endhighlight %}
 
 1) `pip install python-social-auth` or what ever you prefer
@@ -80,7 +81,20 @@ http://example.com/complete/google-oauth2/
 
 * Put the key and the Secret in the corresponding settings fields as seen above.
 
-5) Add the links to your header template. My full login section looks like this now:
+5) Create a pair of facebook keys:
+
+* Go to [https://developers.facebook.com/apps/?action=create][5] and click the green “Create New App” button.
+
+* In the settings of the newly-created application, click “Add Platform”. From the options provided, choose Web, and fill in the URL of the site eg http://example.com 
+
+* Copy the App ID and App Secret, and place them into settings.py file:
+
+{% highlight python %}
+SOCIAL_AUTH_FACEBOOK_KEY = ""
+SOCIAL_AUTH_FACEBOOK_SECRET = ""
+{% endhighlight %}
+
+6) Add the links to your header template. My full login section looks like this now:
 
 {% highlight html %}
 {% raw %}
@@ -91,18 +105,43 @@ http://example.com/complete/google-oauth2/
     </li>
     <li>
       <a href="{% url 'social:begin' 'google-oauth2' %}">
-        <i class="fa fa-user"></i> Login with Google+
+        <i class="fa fa-google-plus"></i> Login with Google+
       </a>
     </li>
     <li>
       <a href="{% url 'social:begin' 'twitter' %}">
-        <i class="fa fa-user"></i> Login with Twitter
+        <i class="fa fa-twitter"></i> Login with Twitter
+      </a>
+    <li>
+      <a href="{% url 'social:begin' 'facebook' %}">
+        <i class="fa fa-facebook"></i> Login with Facebook
       </a>
     </li>
 {% endraw %}
+{% endhighlight %}
+
+7) Add "pipelines" to settings:
+
+This is optional but I found that most of the customizations I wanted were already programmed in what python-social-auth calls "pipelines". Specifically I wanted 'social.pipeline.social_auth.associate_by_email', which will connect an account to a prexisting account if the email matches. This is not recommended if you do not trust the OAuth service to validate email addresses, but since I'm only using Google, Facebook, Twitter, and GitHub, I'm not so worried about it.
+
+{% highlight python %}
+PIPELINE = (
+  'social.pipeline.social_auth.social_details',
+  'social.pipeline.social_auth.social_uid',
+  'social.pipeline.social_auth.auth_allowed',
+  'social.pipeline.social_auth.social_user',
+  'social.pipeline.user.get_username',
+  # 'social.pipeline.mail.mail_validation',
+  'social.pipeline.social_auth.associate_by_email',
+  'social.pipeline.user.create_user',
+  'social.pipeline.social_auth.associate_user',
+  'social.pipeline.social_auth.load_extra_data',
+  'social.pipeline.user.user_details'
+)
 {% endhighlight %}
 
 [1]: http://psa.matiasaguirre.net/docs/index.html
 [2]: https://github.com/omab/python-social-auth
 [3]: https://console.developers.google.com/project
 [4]: https://apps.twitter.com/app/new
+[5]: https://developers.facebook.com/apps/?action=create
