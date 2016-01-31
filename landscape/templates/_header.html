@@ -1,0 +1,21 @@
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="{{ SITEURL }}" id="logo">
+          {{ SITENAME }}
+          {% if SITESUBTITLE %}<h2 id="subtitle-wrap">{{ SITESUBTITLE }}</h2>{% endif %}
+        </a>
+      </h1>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        {% for name, link in SOCIAL %}
+        <a href="{{ link }}" class="nav-icon" title="{{ name }}"></a>
+        {% endfor %}
+        <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" type="atom+xml"></a>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -3,7 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
-  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
+  <link rel="stylesheet/less" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.less" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script>
+    less = {
+      env: "development",
+      async: false,
+      fileAsync: false,
+    };
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
   {% endif %}
@@ -17,55 +26,24 @@
 
 <body id="index" class="home">
   {% include 'github.html' %}
-  <header id="banner" class="body">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-    <nav><ul>
-        {% for title, link in MENUITEMS %}
-        <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU -%}
-        {% for pg in PAGES %}
-        <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
-        {% endfor %}
-        {% endif %}
-        {% if DISPLAY_CATEGORIES_ON_MENU -%}
-        {% for cat, null in categories %}
-        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-        {% endfor %}
-        {% endif %}
-    </ul></nav>
-  </header><!-- /#banner -->
-  {% block content %}
-  {% endblock %}
-  <section id="extras" class="body">
-    {% if LINKS %}
-    <div class="blogroll">
-      <h2>blogroll</h2>
-      <ul>
-        {% for name, link in LINKS %}
-        <li><a href="{{ link }}">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-    </div><!-- /.blogroll -->
-    {% endif %}
-    {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-    <div class="social">
-      <h2>social</h2>
-      <ul>
-        {% if FEED_ALL_ATOM %}
-        <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">atom feed</a></li>
-        {% endif %}
-        {% if FEED_ALL_RSS %}
-        <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">rss feed</a></li>
-        {% endif %}
-
-        {% for name, link in SOCIAL %}
-        <li><a href="{{ link }}">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-    </div><!-- /.social -->
-    {% endif %}
-  </section><!-- /#extras -->
+  {% include "_header.html" %}
+  <div class="outer">
+    <div id="main">
+      {% block content %}{% endblock %}
+    </div>
+    <div id="sidebar">
+      <div class="widget-wrap">
+        <h3 class="title">Categories</h3>
+        <div class="widget">
+          <ul>
+            {% for cat, null in categories %}
+            <li><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer id="contentinfo" class="body">
     <address id="about" class="vcard body">

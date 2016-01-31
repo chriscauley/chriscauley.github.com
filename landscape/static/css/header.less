@@ -1,0 +1,176 @@
+/* from pelican */
+#header {
+  //background: linear-gradient(to bottom,black,transparent 50%);
+  border-bottom: 1px solid #ddd;
+  height: 300px;
+  position: relative;
+}
+#header-outer {
+  height: 100%;
+  position: relative;
+}
+#header .inner {
+  display: inline;
+  float: left;
+  width: 98.33333333333333%;
+}
+#banner {
+  background: url("../images/venus.jpg") center #000;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+#header-title {
+  height: 40px;
+  left: 0;
+  margin-top: -20px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+}
+#logo, #subtitle {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+}
+#logo {
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+#subtitle {
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 1px;
+}
+#subtitle-wrap {
+  color: #fff;
+  margin-top: 16px;
+}
+#main-nav {
+  display: block;
+  float: left;
+}
+.nav-icon,
+.main-nav-link {
+  display: block;
+  opacity: 0.6;
+  padding: 20px 15px;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0,0,0,0.2);
+  transition: opacity 0.2s;
+  &:hover { opacity: 1; }
+}
+
+.nav-icon {
+  color: black;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 28px;
+  height: 30px;
+  line-height: 30px;
+  padding: 10px;
+  text-align: center;
+  width: 30px;
+  &[href*='github.com']:before,
+  &[href*='git.io']:before { content: "\f09b"; }
+  &[href*='twitter.com']:before { content: "\f099"; }
+  &[type$='atom+xml']:before, &[type$='rss+xml']:before { content: "\f09e"; }
+
+  &[href*='about.me'] {background-image: url('../images/icons/aboutme.png');}
+  &[href*='bitbucket.org'] {background-image: url('../images/icons/bitbucket.png');}
+  &[href*='delicious.com'] {background-image: url('../images/icons/delicious.png');}
+  &[href*='digg.com'] {background-image: url('../images/icons/digg.png');}
+  &[href*='facebook.com'] {background-image: url('../images/icons/facebook.png');}
+  &[href*='gitorious.org'] {background-image: url('../images/icons/gitorious.png');}
+  &[href*='gittip.com'] {background-image: url('../images/icons/gittip.png');}
+  &[href*='plus.google.com'] {background-image: url('../images/icons/google-plus.png');}
+  &[href*='groups.google.com'] {background-image: url('../images/icons/google-groups.png');}
+  &[href*='news.ycombinator.com'],
+  &[href*='hackernewsers.com'] {background-image: url('../images/icons/hackernews.png');}
+  &[href*='last.fm'], &[href*='lastfm.'] {background-image: url('../images/icons/lastfm.png');}
+  &[href*='linkedin.com'] {background-image: url('../images/icons/linkedin.png');}
+  &[href*='reddit.com'] {background-image: url('../images/icons/reddit.png');}
+  &[href*='slideshare.net'] {background-image: url('../images/icons/slideshare.png');}
+  &[href*='speakerdeck.com'] {background-image: url('../images/icons/speakerdeck.png');}
+  &[href*='stackoverflow.com'] {background-image: url('../images/icons/stackoverflow.png');}
+  &[href*='vimeo.com'] {background-image: url('../images/icons/vimeo.png');}
+  &[href*='youtube.com'] {background-image: url('../images/icons/youtube.png');}
+}
+.main-nav-link {
+  font-weight: 300;
+  letter-spacing: 1px;
+  @media screen and (max-width: 479px) { display: none; }
+}
+#main-nav-toggle {
+  display: none;
+  &:before { content: "\f0c9"; }
+}
+@media screen and (max-width: 479px) {
+  #main-nav-toggle { display: block; }
+}
+#sub-nav {
+  display: block;
+  text-align: right;
+}
+#search-form-wrap {
+  position: absolute;
+  top: 15px;
+  width: 150px;
+  height: 30px;
+  right: -150px;
+  opacity: 0;
+  transition: 0.2s ease-out;
+}
+#search-form-wrap.on {
+  opacity: 1;
+  right: 0;
+}
+@media screen and (max-width: 479px) {
+  #search-form-wrap {
+    width: 100%;
+    right: -100%;
+  }
+}
+.search-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 5px 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.search-form-input {
+  border: none;
+  background: none;
+  color: #555;
+  width: 100%;
+  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  outline: none;
+}
+.search-form-input::-webkit-search-results-decoration,
+.search-form-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.search-form-submit {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -7px;
+  font: 13px FontAwesome;
+  border: none;
+  background: none;
+  color: #bbb;
+  cursor: pointer;
+}
+.search-form-submit:hover,
+.search-form-submit:focus {
+  color: #777;
+}
