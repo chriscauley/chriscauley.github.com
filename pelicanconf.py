@@ -37,12 +37,18 @@ DEFAULT_PAGINATION = False
 THEME = '/home/chriscauley/pelican-blog/landscape/'
 
 from pelican.readers import HTMLReader
-from jinja2 import Template
+from jinja2 import FileSystemLoader
+from jinja2.environment import Environment
 
 class JinjaReader(HTMLReader):
   def read(self,filename):
+    env = Environment()
+    BASE_DIR = "content/"
+    TEMPLATE_DIR = BASE_DIR+"/".join(filename.split(BASE_DIR)[-1].split("/")[:-1])
+    env.loader = FileSystemLoader(TEMPLATE_DIR)
+    template = env.get_template(filename.split(TEMPLATE_DIR)[-1])
     body, metadata = super(JinjaReader,self).read(filename)
-    return Template(body).render(), metadata
+    return template.render(),metadata
 
 READERS = {
   'html': JinjaReader
