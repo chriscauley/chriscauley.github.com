@@ -9,7 +9,7 @@
   <p>The simple solution is to add a custom reader. This can all be done inside the pelicanconf.py file of the project. Just extend the HTMLReader class to render the final result and add a setting to use this new class instead of HTMLReader</p>
 
 <pre><code class="python">
-# At the bottom of settings.py
+# Anywhere in pelicanconf.py
 from pelican.readers import HTMLReader
 from jinja2 import Template
 
