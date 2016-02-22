@@ -1,9 +1,6 @@
-<html>
-<head>
-<title>UPDATED: Using Jinja2 in Pelican Templates</title>
-<meta name="date" content="2016-02-02 00:08:00" />
-<meta name="modified" content="2016-02-02 00:08:00" />
-</head>
+title: UPDATED: Using Jinja2 in Pelican Templates
+date: 2016-02-02 00:08:00
+modified: 2016-02-02 00:08:00
 <body>
 <p>After my last post I tried importing code fragments into jinja templates using the include tag. I ran into the following error multiple times: <code>TypeError: no loader for this environment specified</code>. This is because I was rendering the html as a string, rather than loading the file from the file system. This means there is no context with which to include a template.</p>
 
@@ -30,4 +27,3 @@ READERS = {
 }
 </code></pre>
 </body>
-</html>
