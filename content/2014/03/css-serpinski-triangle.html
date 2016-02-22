@@ -2,26 +2,27 @@ title: CSS Serpinski Triangle
 date: 2014-03-12 00:00:00
 modified: 2014-03-12 00:00:00
 <body>
-  <ur-tab id="demo">
-    {% include "_serpinski.html" %}
-  </ur-tab>
-  <ur-tab id="css">
-    <pre><code class="css">{% include "_serpinski.css" %}</code></pre>
-  </ur-tab>
-  <ur-tab id="html">
-    <pre><code class="html">
+  <ur-tabs>
+    <ur-tab id="demo">
+      {% include "_serpinski.html" %}
+    </ur-tab>
+    <ur-tab id="css">
+      <pre><code class="css">{% include "_serpinski.css" %}</code></pre>
+    </ur-tab>
+    <ur-tab id="html">
+      <pre><code class="html">
 {% raw %}
 <div id="serpinski">
   <div>
-    <div>{ ... }</div> <!--               -->
-    <div>{ ... }</div> <!-- One unit cell -->
-    <div>{ ... }</div> <!--               -->
+    <div> ... </div> <!--               -->
+    <div> ... </div> <!-- One unit cell -->
+    <div> ... </div> <!--               -->
   </div>
 </div>
 {% endraw %}
-    </code></pre>
-  </ur-tab>
-
+      </code></pre>
+    </ur-tab>
+  </ur-tabs>
   <markdown>  
 A pure css Serpinski Triangle I made. The each unit cell has three divs, and to extend the fractal one level you just add three more divs in each empty div. Each div is `width: 50%; height: 50%;` of the parent div. The divs are then floated, making a square with three squares inside of it, and the forth quadrant is empty.
 
