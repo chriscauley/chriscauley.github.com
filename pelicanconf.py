@@ -59,6 +59,7 @@ class JinjaReader(HTMLReader):
     env.loader = FileSystemLoader(TEMPLATE_DIR)
     text = env.get_template(filename.split(TEMPLATE_DIR)[-1]).render()
     metadata = self.get_meta_data(text)
+    text = "<body>"+"<body>".join(text.split("<body>")[1:])
     return text, metadata
 
 READERS = {
