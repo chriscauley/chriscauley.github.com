@@ -43,16 +43,14 @@ import arrow
 
 class JinjaReader(HTMLReader):
   def get_meta_data(self,text):
-    print 1
     lines = [l.strip() for l in text.split("<body>")[0].split('\n') if l.strip()]
-    print lines
     out = {}
     for line in lines:
       i = line.index(":")
       out[line[:i]] = line[i+1:]
-    for k,v in out:
-      if k in ['date','modified']:
-        out[k] = arrow.get(value).datetime
+    for key,value in out.items():
+      if key in ['date','modified']:
+        out[key] = arrow.get(value.strip()).datetime
     return out
   def read(self,filename):
     env = Environment()
