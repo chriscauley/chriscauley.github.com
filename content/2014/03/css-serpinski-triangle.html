@@ -10,17 +10,13 @@ modified: 2014-03-12 00:00:00
       <pre><code class="css">{% include "_serpinski.css" %}</code></pre>
     </ur-tab>
     <ur-tab id="html">
-      <pre><code class="html">
-{% raw %}
-<div id="serpinski">
+      <pre><code class="html">{% filter escape %}<div id="serpinski">
   <div>
     <div> ... </div> <!--               -->
     <div> ... </div> <!-- One unit cell -->
     <div> ... </div> <!--               -->
   </div>
-</div>
-{% endraw %}
-      </code></pre>
+</div>{% endfilter %}</code></pre>
     </ur-tab>
   </ur-tabs>
   <markdown>  

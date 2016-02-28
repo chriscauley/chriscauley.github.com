@@ -1,0 +1,79 @@
+<modal>
+  <div class="mask" onclick={ cancel }></div>
+  <div class="inner">
+    <a onclick={ cancel } class="cancel">X</a>
+    <div class="title">{ opts.title }</div>
+    <yield/>
+  </div>
+
+  <style scoped>
+  :scope {
+    display: block;
+    position: fixed;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    z-index: 10000;
+  }
+  :scope.absolute { position: absolute; }
+  @media (max-width: 480px) { /* we'll need all the space we can get in mobile */
+    :scope.absolute { position: fixed; }
+  }
+  :scope, .mask {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  .cancel {
+    background: black;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    position: absolute;
+    right: -13px;
+    text-align: center;
+    text-decoration: none;
+    top: -13px;
+    width: 26px;
+  }
+  .mask {
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    z-index: 1;
+  }
+  .inner {
+    align-self: center;
+    display: inline-block;
+    background: white;
+    max-width: 100%;
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+  }
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  </style>
+
+  var self = this;
+  cancel(e) {
+    (self.opts.cancel || function(){})(e);
+    self.unmount();
+  }
+  success(e) {
+    (self.opts.success || function(){})();
+    self.unmount();
+  }
+  if (this.parent) { this.parent.on("update",function() { self.update() }); }
+  this.on("update",function() {
+    this.root.className = this.opts.modal_class;
+  });
+</modal>
