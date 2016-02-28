@@ -1,0 +1,40 @@
+---
+layout: post
+title: "YAPC 1: A good start"
+description: "Introducing version 0.1 of Yet Another Paint Clone"
+category: 
+tags: []
+---
+{% include JB/setup %}
+
+  I started making my own paint clone to run in the browser a few months ago, and despite the fact that it's definitely not ready for prime time I decided to push it to an externally visible url. The current instance is visible [here][1]. Of course the first step in building a project is naming the project, everything after that is just "coding it up". So I settled on "Yet Another Paint Clone" for now. Although quite a mouthful it abbreviates to "Why a PC?" The only reason I still use a PC is the Linux program [Kolourpaint][2]. Otherwise I have converted my workflow 100% to Chromebooks, so the cumbersome name is good for now.
+
+<img src="/assets/images/yapc-v0.1.png" alt="Screenshot of first release of my program" />
+
+Above is a screenshot illustrating many of the programs capabilities. Full current features are:
+
+* Open/Save images to localstorage
+
+* Save images as png (right click -&gt; "save image as...")
+
+* Foreground/background colors (fully supported for fill, brush, circle, rectangle, and eye dropper)
+
+* Paint brush with custom size (unlabeled number input at bottom of tools)
+
+* Paint bucket (algorithm adopted from [William Malone's blog][3])
+
+* Select tool (currently only for moving a selection around)
+
+* Rect and circle tool
+
+* Canvas resizer
+
+* Eye Dropper (color selector)
+
+[1]: http://chriscauley.github.com/paint/
+
+[2]: http://en.wikipedia.org/wiki/KolourPaint
+
+[3]: http://www.williammalone.com/articles/html5-canvas-javascript-paint-bucket-tool/
+
+That's about it for now. Hopefully I'll have a functional version with file IO and a more smooth interface by the end of February. Stay Tuned.

@@ -37,6 +37,8 @@ DEFAULT_PAGINATION = False
 IGNORE_FILES = ["_*.html","_*/*.html","/*"]
 DEFAULT_DATE = 'fs'
 THEME = '/home/chriscauley/pelican-blog/landscape/'
+STATIC_PATHS = ['projects']
+ARTICLE_EXCLUDES = ['projects']
 
 from pelican.readers import HTMLReader
 from jinja2 import FileSystemLoader
@@ -54,7 +56,7 @@ class JinjaReader(HTMLReader):
       out[key] = self.process_metadata(key,value)
     return out
   def read(self,filename):
-    env = Environment()
+    env = Environment(lstrip_blocks=True,trim_blocks=True)
     BASE_DIR = "content/"
     TEMPLATE_DIR = BASE_DIR+"/".join(filename.split(BASE_DIR)[-1].split("/")[:-1])
     env.loader = FileSystemLoader(TEMPLATE_DIR)
