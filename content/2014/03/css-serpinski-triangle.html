@@ -1,4 +1,7 @@
 title: CSS Serpinski Triangle
+date: 2014-03-12 00:00:00
+modified: 2014-03-12 00:00:00
+tags: [css,fractals]
 <body>
   <ur-tabs>
     <ur-tab id="demo">
@@ -8,13 +11,17 @@ title: CSS Serpinski Triangle
       <pre><code class="css">{% include "_serpinski.css" %}</code></pre>
     </ur-tab>
     <ur-tab id="html">
-      <pre><code class="html">{% filter escape %}<div id="serpinski">
+      <pre><code class="html">
+          {%- filter escape -%}
+<div id="serpinski">
   <div>
     <div> ... </div> <!--               -->
     <div> ... </div> <!-- One unit cell -->
     <div> ... </div> <!--               -->
   </div>
-</div>{% endfilter %}</code></pre>
+</div>
+          {%- endfilter -%}
+      </code></pre>
     </ur-tab>
   </ur-tabs>
   <markdown>  
