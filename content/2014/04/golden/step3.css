@@ -1,0 +1,61 @@
+#golden3 {
+  height: 371px;
+  left: 0;
+  position: relative;
+  width: 600px;
+}
+@media (max-width: 980px) {
+  #golden3 {
+    height: 290px;
+    width: 470px;
+  }
+}
+@media (max-width: 530px) {
+  #golden3 {
+    height: 160px;
+    width: 258px;
+  }
+}
+#golden3 div > div {
+  -webkit-filter: invert(1) hue-rotate(72deg);
+  filter: invert(1) hue-rotate(72deg);
+}
+#golden3 div > div {
+  height: 61.8%;
+  left: 100%;
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  top: 0;
+  width: 61.8%;
+  z-index: 100;
+}
+#golden3 div:before,
+#golden3 div:after {
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+#golden3 div:before {
+  background: #ffff00;
+  border-radius: 100% 0 0 0;
+  box-shadow: inset 12px 0px 15px #0000ff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 61.8%;
+  z-index: 2;
+}
+#golden3 div:after {
+  background: #ff0000;
+  width: 100%;
+  z-index: 1;
+}
+#golden3 div:hover div:not(:hover) {
+  -webkit-filter: hue-rotate(0deg);
+  filter: hue-rotate(0deg);
+}
