@@ -34,7 +34,7 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-IGNORE_FILES = ["_*.html","/*"]
+IGNORE_FILES = ["_*.html","_*/*.html","/*"]
 DEFAULT_DATE = 'fs'
 THEME = '/home/chriscauley/pelican-blog/landscape/'
 
@@ -51,8 +51,7 @@ class JinjaReader(HTMLReader):
       i = line.index(":")
       out[line[:i]] = line[i+1:]
     for key,value in out.items():
-      if key in ['date','modified']:
-        out[key] = arrow.get(value.strip()).datetime
+      out[key] = self.process_metadata(key,value)
     return out
   def read(self,filename):
     env = Environment()
