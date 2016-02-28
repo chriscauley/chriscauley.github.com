@@ -34,6 +34,8 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+IGNORE_FILES = ["_*.html","/*"]
+DEFAULT_DATE = 'fs'
 THEME = '/home/chriscauley/pelican-blog/landscape/'
 
 from pelican.readers import HTMLReader

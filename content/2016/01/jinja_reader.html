@@ -1,6 +1,4 @@
 title: Using Jinja2 in Pelican Templates
-date: 2016-01-29 00:40:00
-modified: 2016-01-29 00:40:00
 <body>
   <p>I recently decided to switch to Pelican as a static site generator for this blog. I chose pelican because I am very familiar with Python and would like to be able to add custom features. The first thing I wanted to do was render HTML templates using Jinja2. Luckily this can be done without hacking the core. I'll put the solution here. Feel free to hit me up on twitter with questions or even if you want the explanation better explained.</p>
   <p>The simple solution is to add a custom reader. This can all be done inside the pelicanconf.py file of the project. Just extend the HTMLReader class to render the final result and add a setting to use this new class instead of HTMLReader</p>
