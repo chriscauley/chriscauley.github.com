@@ -22,6 +22,16 @@ I also resized it and changed the image. I wanted to add the ability to input an
 
 Also I added a button for freezing the image so that you can easily save the image. I might eventually create a txrxlabs.org subdomain for hosting this and other projects, but for now this is all I'm doing:
 </markdown>
+<p><button onclick="startSMDemo();return false">Click here to start demo</button></p>
 
-<iframe src="/theme/smcameron/index.html" frameBorder="0" width="300" height="700"></iframe>
+<iframe id="smcameron_iframe" frameBorder="0" width="620" height="340"
+        style="background: url(/projects/smcameron/ss.png) no-repeat;opacity: 0.6;"></iframe>
+<script>
+  function startSMDemo() {
+    var e = document.getElementById("smcameron_iframe");
+    e.src="/projects/smcameron/index.html";
+    e.style.background = "";
+    e.style.opacity = 0;
+  }
+</script>
 </body>
