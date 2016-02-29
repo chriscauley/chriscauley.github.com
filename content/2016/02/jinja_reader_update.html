@@ -1,4 +1,6 @@
 title: UPDATED: Using Jinja2 in Pelican Templates
+date: 2016-02-02 12:00:00
+modified: 2016-02-28 18:01:00
 <body>
 <p>After my last post I tried importing code fragments into jinja templates using the include tag. I ran into the following error multiple times: <code>TypeError: no loader for this environment specified</code>. This is because I was rendering the html as a string, rather than loading the file from the file system. This means there is no context with which to include a template.</p>
 
@@ -19,8 +21,7 @@ class JinjaReader(HTMLReader):
       i = line.index(":")
       out[line[:i]] = line[i+1:]
     for key,value in out.items():
-      if key in ['date','modified']:
-        out[key] = arrow.get(value.strip()).datetime
+      out[key] = self.process_metadata(key,value)
     return out
   def read(self,filename):
     env = Environment()

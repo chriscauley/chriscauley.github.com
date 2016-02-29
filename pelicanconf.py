@@ -52,9 +52,7 @@ class JinjaReader(HTMLReader):
     for line in lines:
       i = line.index(":")
       out[line[:i]] = line[i+1:]
-    for key,value in out.items():
-      out[key] = self.process_metadata(key,value)
-    return out
+    return { key: self.process_metadata(key,value) for key,value in out.items() }
   def read(self,filename):
     env = Environment(lstrip_blocks=True,trim_blocks=True)
     BASE_DIR = "content/"
