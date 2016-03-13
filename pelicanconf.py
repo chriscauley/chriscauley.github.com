@@ -54,7 +54,7 @@ class JinjaReader(HTMLReader):
       out[line[:i]] = line[i+1:]
     return { key: self.process_metadata(key,value) for key,value in out.items() }
   def read(self,filename):
-    print filename
+    print "processing: ",filename
     env = Environment(lstrip_blocks=True,trim_blocks=True)
     BASE_DIR = "content/"
     TEMPLATE_DIR = BASE_DIR+"/".join(filename.split(BASE_DIR)[-1].split("/")[:-1])
