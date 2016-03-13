@@ -41,6 +41,16 @@
           </ul>
         </div>
       </div>
+      <div class="widget-wrap">
+        <h3 class="title">tags</h3>
+        <div class="widget">
+          <ul>
+            {% for cat, articles in tags %}
+            <li><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }} ({{ articles|length }})</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
