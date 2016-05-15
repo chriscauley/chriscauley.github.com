@@ -1,1 +1,1 @@
-pelican -r && cd output && python -m pelican.server
+pelican -r & cd output && python -m pelican.server
