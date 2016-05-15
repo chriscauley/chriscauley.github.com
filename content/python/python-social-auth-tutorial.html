@@ -5,6 +5,8 @@ tags: django, python, oauth
 <body>
 <markdown>
 I recently had to set up Twitter and Google authentication for a django project I worked on and found the documentation to be a bit lacking for [Python Social Auth][1], so I thought I would document a quick set up here for anyone who is interested. We will need all of the following settings:
+
+[1]: http://psa.matiasaguirre.net/docs/index.html
 </markdown>
 
 <pre><code class="python">
@@ -52,11 +54,12 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ""
 
 * Create project, then click on project name.
 
-* Under APIs & AUTH, select APIs and enable the Google+ API
+* Under APIs &amp; AUTH, select APIs and enable the Google+ API
 
 * Under APIs & AUTH, click "Create new Client ID"
 
 * Select "Web application". If my domain is example.com I will enter in the following:
+
 [1]: http://psa.matiasaguirre.net/docs/index.html
 [2]: https://github.com/omab/python-social-auth
 [3]: https://console.developers.google.com/project
@@ -74,7 +77,7 @@ http://example.com/complete/google-oauth2/
 <markdown>
 * I had no trouble with the above, but everything I read online said the above was the most tricky step. Verify the protocol (http vs https) domain, subdomain, port (none above, but my dev server is :8013) and trailing slashes.
 
-* Now You have keys! SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET is your "CLIENT SECRET" on the Googly Plus and SOCIAL_AUTH_GOOGLE_OAUTH2_KEY is your "CLIENT ID"
+* Now You have keys! `SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET` is your "CLIENT SECRET" on the Googly Plus and `SOCIAL_AUTH_GOOGLE_OAUTH2_KEY` is your "CLIENT ID"
 
 4) Create a pair of Twitter keys:
 
