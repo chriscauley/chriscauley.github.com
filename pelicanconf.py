@@ -27,7 +27,7 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (('chirscauley', 'https://github.com/chriscauley'),
-          ('@lablackey', 'http://twitter.com/lablackey'),)
+          ('@maxenthalpy', 'http://twitter.com/maxenthalpy'),)
 
 DEFAULT_PAGINATION = False
 
