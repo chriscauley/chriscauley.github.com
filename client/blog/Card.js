@@ -11,7 +11,7 @@ const card = {
   description: 'text-gray-700 text-base mb-2',
 }
 
-export default function BlogCard (props) {
+export default function BlogCard(props) {
   const { post } = props
   return (
     <div className={card.outer}>

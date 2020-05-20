@@ -1,7 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 import Highlight from 'react-highlight.js'
-import { register } from '../../Post'
+import { register } from '../../register'
 
 const html = `<div id="serpinski">
   <div>
