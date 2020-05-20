@@ -3,8 +3,9 @@
   "author": "chriscauley <chris@lablackey.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf docs; parcel build client/index.html -d docs",
-    "develop": "parcel client/index.html -p 8069",
+    "build": "rm -rf docs; D=docs yarn _static; parcel build client/index.html -d docs",
+    "_static": "mkdir -p $D;rm -rf $D/src;cp -r client $D/src",
+    "develop": "D=dist yarn _static;parcel client/index.html -p 8069",
     "lint": "yarn eslint client"
   },
   "repository": {
