@@ -3,20 +3,23 @@ import ReactDOM from 'react-dom'
 import { HashRouter, Route, Link } from 'react-router-dom'
 import css from '@unrest/css'
 
-import { listCategories, listTags, slug_map } from './Post'
-import Home from './Home'
+import { listCategories, _listTags, slug_map } from './Post'
 import Nav from './Nav'
 import './posts'
 
 const ListCategories = () => {
   return (
     <div>
-      {listCategories().map(([slug, posts])=>(
+      {listCategories().map(([slug, posts]) => (
         <li key={slug}>
           {slug} ({posts.length})
           <ul>
-            {posts.map(post => console.log(post) || (
-              <li key={post.slug}><Link className={css.link()} to={post.url}>{post.title}</Link></li>
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link className={css.link()} to={post.url}>
+                  {post.title}
+                </Link>
+              </li>
             ))}
           </ul>
         </li>
@@ -26,15 +29,14 @@ const ListCategories = () => {
 }
 
 const ShowPost = (props) => {
-  const {slug, category} = props.match.params
+  const { slug, _category } = props.match.params
   const post = slug_map[slug]
   return post ? (
     <div>
       <h1>{post.title}</h1>
       <post.Component />
     </div>
-  ): null
-
+  ) : null
 }
 
 const App = () => {
@@ -44,7 +46,7 @@ const App = () => {
       <div className="app-content">
         <div className={css.grid.row()}>
           <div className={css.grid.col4()}>
-            <ListCategories/>
+            <ListCategories />
           </div>
           <div className={css.grid.col8()}>
             <Route path="/post/:category/:slug/" component={ShowPost} />
