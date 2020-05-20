@@ -36,7 +36,7 @@ DEFAULT_PAGINATION = False
 
 IGNORE_FILES = ["_*.html","_*/*.html","/*"]
 DEFAULT_DATE = 'fs'
-THEME = '/home/chriscauley/pelican-blog/landscape/'
+THEME = 'landscape'
 STATIC_PATHS = ['projects']
 ARTICLE_EXCLUDES = ['projects']
 
