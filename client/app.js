@@ -2,30 +2,36 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, Route, Link } from 'react-router-dom'
 import css from '@unrest/css'
+import BlogCard from './components/BlogCard'
+import url from './url'
 
-import { listCategories, _listTags, slug_map } from './Post'
+import { listTags, slug_map, cat_map } from './Post'
 import Nav from './Nav'
 import './posts'
 
-const ListCategories = () => {
+const ListTags = () => {
   return (
-    <div>
-      {listCategories().map(([slug, posts]) => (
-        <li key={slug}>
-          {slug} ({posts.length})
-          <ul>
-            {posts.map((post) => (
-              <li key={post.slug}>
-                <Link className={css.link()} to={post.url}>
-                  {post.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
+    <div className="mb-4">
+      <h4>Tags</h4>
+      <ul>
+        {listTags().map(([slug, posts]) => (
+          <li key={slug}>
+            <Link to={url.tag(slug)} className={css.link()}>
+              {slug} ({posts.length})
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   )
+}
+
+const CategoryIndex = (props) => {
+  const posts = cat_map[props.match.params.category]
+  if (!posts) {
+    throw 'Category Missing!'
+  }
+  return posts.map((post) => <BlogCard key={post.slug} post={post} />)
 }
 
 const ShowPost = (props) => {
@@ -46,10 +52,11 @@ const App = () => {
       <div className="app-content">
         <div className={css.grid.row()}>
           <div className={css.grid.col4()}>
-            <ListCategories />
+            <ListTags />
           </div>
           <div className={css.grid.col8()}>
             <Route path="/post/:category/:slug/" component={ShowPost} />
+            <Route exact path="/post/:category/" component={CategoryIndex} />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-const cat_map = {
+export const cat_map = {
   css: [],
 }
 
-const tag_map = {}
+export const tag_map = {}
 
 export const slug_map = {}
 
@@ -16,6 +16,7 @@ export const register = (post) => {
     throw `Slug "${slug}" is not unique`
   }
   slug_map[slug] = post
+  cat_map[tags[0]].push(post)
   tags.map((tag) => {
     tag_map[tag] = tag_map[tag] || []
     tag_map[tag].push(post)

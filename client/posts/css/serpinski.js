@@ -50,7 +50,8 @@ function Component() {
 
 register({
   Component,
-  Thumbnail: Serpinski,
+  thumbnail: '/images/serpinski.png',
+  description: 'A recursive triforce using nothing but HTML and CSS.',
   title: 'CSS Serpinski Triangle',
   slug: 'serpinski',
   date: '2014-03-12 00:00:00',
