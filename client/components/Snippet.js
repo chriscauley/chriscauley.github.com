@@ -11,7 +11,7 @@ const Base = ({ api, src, className = 'mb-4' }) => {
   const { loading, content } = api
   const filename = src.split('/').pop()
   if (loading) {
-    return null
+    return <div className="loading-box text-4xl h-64" />
   }
   return (
     <div className={'relative ' + className}>

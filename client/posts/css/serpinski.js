@@ -23,15 +23,16 @@ const Recurse3 = ({ depth, id }) => (
 )
 
 function Component() {
+  const tabs = {
+    demo: <Recurse3 id="serpinski-triangle" depth={4} />,
+    css: <Snippet src="/src/styles/_serpinski.css" />,
+    html: <Snippet src="/src/posts/css/_serpinski.html" />,
+  }
+
   return (
     <div>
       <Markdown>{content}</Markdown>
-      <Tabs tabs={{
-        demo: <Recurse3 id="serpinski-triangle" depth={4} />,
-        html: <Snippet src="/src/posts/css/_serpinski.html" />,
-        css: <Snippet src="/src/styles/_serpinski.css" />,
-      }}/>
-
+      <Tabs tabs={tabs} />
     </div>
   )
 }
