@@ -15,10 +15,12 @@ const App = () => {
       <Nav />
       <div className="app-content">
         <div className={css.grid.row()}>
-          <div className={css.grid.col('hidden md:block w-64')}>
+          <div
+            className={css.grid.col('hidden md:block w-1/3 lg:1/4 xl:w-1/6')}
+          >
             <Sidebar />
           </div>
-          <div className={css.grid.col('flex-grow')} style={{flexBasis:1}}>
+          <div className={css.grid.col('w-2/3 lg:3/4 xl:w-5/6')}>
             <Route path="/post/:category/:slug/" component={Post} />
             <Route exact path="/post/:category/" component={CategoryIndex} />
           </div>

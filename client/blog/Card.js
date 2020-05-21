@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import url from '../url'
 
 const card = {
-  outer: 'max-w-sm w-full lg:max-w-full lg:flex rounded border',
+  outer: 'max-w-sm w-full lg:max-w-full lg:flex rounded border mb-4',
   image: 'block h-48 lg:h-auto lg:w-48 flex-none bg-cover',
   right: 'bg-white p-4 flex flex-col justify-between leading-normal',
   title: 'text-gray-900 font-bold text-xl mb-2',

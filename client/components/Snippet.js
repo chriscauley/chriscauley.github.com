@@ -7,14 +7,14 @@ const prepData = (content) => ({ content })
 
 const withSrc = RestHook('${src}', { processRequest, prepData })
 
-const Base = ({ api, src, className = 'mb-4' }) => {
+const Base = ({ api, src }) => {
   const { loading, content } = api
   const filename = src.split('/').pop()
   if (loading) {
     return <div className="loading-box text-4xl h-64" />
   }
   return (
-    <div className={'relative ' + className}>
+    <div className="relative">
       <a
         href={src}
         className="absolute top-0 right-0 bg-gray-400 px-2 py-1 border rounded-bl"

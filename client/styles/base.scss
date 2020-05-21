@@ -1,1 +1,12 @@
 @import "serpinski";
+
+.blog-post {
+  p {
+    @apply mb-6 leading-relaxed text-lg;
+  }
+}
+
+.react-tabs__tab-panel {
+  @apply border-b mt-2 mb-8;
+  height: 400px;
+}
