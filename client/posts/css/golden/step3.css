@@ -1,0 +1,52 @@
+#golden3 {
+  height: 371px;
+  left: 0;
+  position: relative;
+  width: 600px;
+}
+
+@media (max-width: 980px) { #golden3 { height: 290px; width: 470px; } }
+@media (max-width: 530px) { #golden3 { height: 160px; width: 258px; } }
+
+#golden3 div > div {
+  filter: invert(1) hue-rotate(72deg);
+}
+
+#golden3 div > div {
+  height: 61.8%;
+  left: 100%;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  top: 0;
+  width: 61.8%;
+  z-index: 100;
+}
+
+#golden3 div:before, #golden3 div:after {
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+#golden3 div:before {
+  background: yellow;
+  border-radius: 100% 0 0 0;
+  box-shadow: inset 12px 0px 15px blue;
+  box-sizing: border-box;
+  width: 61.8%;
+  z-index: 2;
+}
+
+#golden3 div:after {
+  background: red;
+  width: 100%;
+  z-index: 1;
+}
+
+#golden3 div:hover div:not(:hover) {
+  filter: hue-rotate(00deg);
+}
