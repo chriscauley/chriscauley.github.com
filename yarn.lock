@@ -1295,6 +1295,17 @@
   resolved "https://registry.yarnpkg.com/@unrest/react-jsonschema-form/-/react-jsonschema-form-0.0.2.tgz#cb620eff33702d3452c72b81eaeb7b324e728fa1"
   integrity sha512-4eTFUO4/waCkTujfPC1J2s4Ht3ryXN4wm8RBQ9sHX1ZhSPvLJc0lMLQCrs8TkYA4hC1A05LMyjsmTRZipz9y0Q==
 
+"@unrest/react-rest-hook@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@unrest/react-rest-hook/-/react-rest-hook-0.0.2.tgz#f1ad0a63c1775da9137dda2e4543ed1650d2cc81"
+  integrity sha512-HAA0bENBGZQqwru2ZR0gM2VyVaF2HbFh+n/T3yX2ul9Gy1HAuBp3ZRrwTbhZ11F+jscdH6UxiXPxHgaXO0BPIA==
+  dependencies:
+    lodash "^4.17.15"
+    react ">=15"
+    react-dom "^16.13.1"
+    react-router-dom "^5.1.2"
+    use-global-hook "^0.1.12"
+
 "@unrest/storage@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@unrest/storage/-/storage-0.1.0.tgz#cb18a1c376c32e9adad2d39c277c5f0ed6c6eb9a"
@@ -6438,7 +6449,7 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-"react-dom@^0.14.0 || ^15.0.0 || ^16.0.0":
+react-dom@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
@@ -6533,7 +6544,7 @@ react-static-google-map@^0.6.2:
     react ">=0.14.x"
     react-promise "2.0.0"
 
-react@>=0.14.x, "react@^0.14.0 || ^15.0.0 || ^16.0.0":
+react@>=0.14.x, react@>=15:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==

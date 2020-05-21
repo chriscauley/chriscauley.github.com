@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rm -rf docs; D=docs yarn _static; parcel build client/index.html -d docs",
     "_static": "mkdir -p $D;rm -rf $D/src;cp -r client $D/src",
-    "develop": "D=dist yarn _static;parcel client/index.html -p 8069",
+    "develop": "parcel client/index.html -p 8069",
     "lint": "yarn eslint client"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "@unrest/random": "^0.0.2",
     "@unrest/react-config-hook": "^0.0.1",
     "@unrest/react-jsonschema-form": "^0.0.2",
+    "@unrest/react-rest-hook": "^0.0.2",
     "@unrest/storage": "^0.1.0",
     "@unrest/tailwind": "^0.0.2",
     "classnames": "^2.2.6",
@@ -29,8 +30,8 @@
     "eslint-config-prettier": "^6.11.0",
     "parcel": "^1.12.4",
     "query-string": "^6.12.1",
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react": ">=15",
+    "react-dom": "^16.13.1",
     "react-highlight.js": "^1.0.7",
     "react-jsonschema-form": "2.0.0-alpha.1",
     "react-markdown": "^4.3.1",

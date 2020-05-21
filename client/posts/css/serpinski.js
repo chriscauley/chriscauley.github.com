@@ -1,15 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
-import Highlight from 'react-highlight.js'
 import { register } from '../../register'
-
-const html = `<div id="serpinski">
-  <div>
-    <div> ... </div> <!--               -->
-    <div> ... </div> <!-- One unit cell -->
-    <div> ... </div> <!--               -->
-  </div>
-</div>`
+import Snippet from '../../components/Snippet'
 
 const content = `
 A pure css Serpinski Triangle I made. The each unit cell has three divs, and to extend the fractal one level you just add three more divs in each empty div. Each div is \`width: 50%; height: 50%;\` of the parent div. The divs are then floated, making a square with three squares inside of it, and the forth quadrant is empty.
@@ -41,8 +33,8 @@ function Component() {
   return (
     <div>
       <Markdown>{content}</Markdown>
-      <Highlight>{html}</Highlight>
-      <div className="mb-4" />
+      <Snippet src="/src/posts/css/_serpinski.html" />
+      <Snippet src="/src/styles/_serpinski.css" />
       <Serpinski />
     </div>
   )
