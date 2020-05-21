@@ -2,6 +2,7 @@ import React from 'react'
 import Markdown from 'react-markdown'
 import { register } from '../../register'
 import Snippet from '../../components/Snippet'
+import { Tabs } from '@unrest/core'
 
 const content = `
 A pure css Serpinski Triangle I made. The each unit cell has three divs, and to extend the fractal one level you just add three more divs in each empty div. Each div is \`width: 50%; height: 50%;\` of the parent div. The divs are then floated, making a square with three squares inside of it, and the forth quadrant is empty.
@@ -25,9 +26,12 @@ function Component() {
   return (
     <div>
       <Markdown>{content}</Markdown>
-      <Snippet src="/src/posts/css/_serpinski.html" />
-      <Snippet src="/src/styles/_serpinski.css" />
-      <Recurse3 id="serpinski-triangle" depth={4} />
+      <Tabs tabs={{
+        demo: <Recurse3 id="serpinski-triangle" depth={4} />,
+        html: <Snippet src="/src/posts/css/_serpinski.html" />,
+        css: <Snippet src="/src/styles/_serpinski.css" />,
+      }}/>
+
     </div>
   )
 }
