@@ -2,10 +2,8 @@ import React from 'react'
 import Markdown from 'react-markdown'
 import Highlight from 'react-highlight.js'
 import css from '@unrest/css'
-import { Tabs } from '@unrest/core'
 
 import { register } from '../../../register'
-import Snippet from '../../../components/Snippet'
 
 const md1 = `I missed out on the [April Recreational Programming Group](https://apps.txrxlabs.org/blog/121/recreational-computer-programming-group-april-2014/) because I was at PyCon. He presented on a really cool texture genreator. It's written in Processing so I decided to see how easy it is to run it using [processing.js](http://processingjs.org/). TL;DR - Really easy.
 
@@ -21,19 +19,19 @@ int xdim = 300;
 int ydim = 300;
 int nparticles = 50000;`
 
-
 class Component extends React.Component {
-  state={}
+  state = {}
   render() {
-    const {clicked} = this.state
+    const { clicked } = this.state
+    const { _static } = this.props
     const props = {
       style: {
-        background: "url(/src/posts/misc/curly-vortex/ss.png) no-repeat",
+        background: `url(${_static('ss.png')}) no-repeat`,
         opacity: 0.6,
         width: '100%',
         height: 400,
-        overflowX: 'hidden'
-      }
+        overflowX: 'hidden',
+      },
     }
     if (clicked) {
       delete props.style.background
@@ -48,8 +46,10 @@ class Component extends React.Component {
         {!clicked && (
           <button
             className={css.button('mb-6')}
-            onClick={() => this.setState({clicked: true})}
-          >Click here to start demo</button>
+            onClick={() => this.setState({ clicked: true })}
+          >
+            Click here to start demo
+          </button>
         )}
         <iframe {...props}></iframe>
       </>
@@ -59,8 +59,8 @@ class Component extends React.Component {
 
 register({
   Component,
+  path: 'misc/curly-vortex',
   title: "Smcameron's curly vortex",
-  tags: ["txrx", "processing"],
-  date: "2014-04-19 12:00:00",
-  modified: "2014-04-19 12:00:00",
+  tags: ['txrx', 'processing'],
+  date: '2014-04-19 12:00:00',
 })

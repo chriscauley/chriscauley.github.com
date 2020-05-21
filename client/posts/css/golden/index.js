@@ -6,8 +6,6 @@ import { Tabs } from '@unrest/core'
 
 const Demo = ({ ...props }) => <iframe className="w-full h-full" {...props} />
 
-const url = (s) => `/src/posts/css/golden/${s}`
-
 const md1 = `The [golden ratio](http://en.wikipedia.org/wiki/Golden_rectangle "Wikipedia: Golden Rectangle") has long fascinated mankind because blah blah blah... And the [golden rectangle](http://en.wikipedia.org/wiki/Golden_rectangle "Wikipedia: Golden Rectangle") has aesthetic properties because of yadda yadda yadda... If you don't already know about this magical number, I'm not the person to educate you. Trust me, it's cool.
 
 About a year ago I decided to create the golden rectangle in pure CSS as a way to learn about inheritance and to prepare myself to create more complex fractals in CSS/HTML.
@@ -21,23 +19,23 @@ In this example, if you hover over a div it will remove hue-rotate for all child
 const md2 =
   "Then the child divs are placed at the top right corner, outside of the parent div using absolute positioning. The children are then rotated a quarter turn to create the golden rectangle. If you hover over any of the rectangles in the following figure, the :hover pseudo class will rotate the child and all of it's ancestor divs. This forms the golden rectangle."
 
-const Component = () => {
+const Component = ({ _static }) => {
   const tabs1 = {
-    demo: <Demo src={url('step1.html')} />,
-    css: <Snippet src={url('step1.css')} />,
-    html: <Snippet src={url('step1.html')} />,
+    demo: <Demo src={_static('step1.html')} />,
+    css: <Snippet src={_static('step1.css')} />,
+    html: <Snippet src={_static('step1.html')} />,
   }
 
   const tabs2 = {
-    demo: <Demo src={url('step2.html')} />,
-    css: <Snippet src={url('step2.css')} />,
-    html: <Snippet src={url('step2.html')} />,
+    demo: <Demo src={_static('step2.html')} />,
+    css: <Snippet src={_static('step2.css')} />,
+    html: <Snippet src={_static('step2.html')} />,
   }
 
   const tabs3 = {
-    demo: <Demo src={url('step3.html')} />,
-    css: <Snippet src={url('step3.css')} />,
-    html: <Snippet src={url('step3.html')} />,
+    demo: <Demo src={_static('step3.html')} />,
+    css: <Snippet src={_static('step3.css')} />,
+    html: <Snippet src={_static('step3.html')} />,
   }
 
   return (
@@ -57,11 +55,8 @@ const Component = () => {
 register({
   Component,
   description: "It's class-less, just like me.",
-  hero: url('hero.png'),
-  thumbnail: url('thumbnail.png'),
+  path: 'css/golden',
   title: 'Pure CSS Golden Spiral',
-  slug: 'golden',
-  tags: ['css', 'fractals'],
+  tags: ['fractals'],
   date: '2014-04-19 12:00:00',
-  modified: '2018-04-19 12:00:00',
 })

@@ -16,13 +16,13 @@ export default function BlogCard(props) {
   return (
     <div className={card.outer}>
       <Link
-        to={post.url}
+        to={url.post(post)}
         className={card.image}
         style={{ backgroundImage: `url('${post.thumbnail}')` }}
         title=""
       />
       <div className={card.right}>
-        <Link to={post.url} className={card.title}>
+        <Link to={url.post(post)} className={card.title}>
           {post.title}
         </Link>
         <div className={card.description}>{post.description}</div>

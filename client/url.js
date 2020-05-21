@@ -1,5 +1,4 @@
 export default {
-  post: ({ slug, category }) => `/post/${slug}/${category}/`,
-  category: (category) => `/post/${category}/`,
+  post: ({ slug, category }) => `/post/${category}/${slug}/`,
   tag: (tag) => `/post/${tag}/`,
 }
