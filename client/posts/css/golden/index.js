@@ -57,7 +57,7 @@ const Component = () => {
 register({
   Component,
   description: "It's class-less, just like me.",
-  image: url('thumbnail.png'),
+  hero: url('hero.png'),
   thumbnail: url('thumbnail.png'),
   title: 'Pure CSS Golden Spiral',
   slug: 'golden',

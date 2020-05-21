@@ -32,7 +32,7 @@ function Component() {
 register({
   Component,
   thumbnail: url('thumbnail.png'),
-  image: url('hero.png'),
+  hero: url('hero.png'),
   description: 'A recursive triforce using nothing but HTML and CSS.',
   title: 'CSS Serpinski Triangle',
   slug: 'serpinski',

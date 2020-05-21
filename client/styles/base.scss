@@ -2,9 +2,14 @@
   p {
     @apply mb-6 leading-relaxed text-lg;
   }
+  .hero {
+    width: 100%;
+    padding-top: 25%;
+    background-size: cover;
+  }
 }
 
 .react-tabs__tab-panel {
-  @apply border-b mt-2 mb-8;
+  @apply border-b mt-2 mb-8 overflow-auto;
   height: 400px;
 }
