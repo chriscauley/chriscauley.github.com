@@ -9,16 +9,8 @@ A pure css Serpinski Triangle I made. The each unit cell has three divs, and to 
 Normally pure css trangles are made using elements with \`width: 0; height: 0\` and a border with asymetrick coloring. If you are unfamiliar with this technique, you can read more at [CSS Tricks](http://css-tricks.com/snippets/css/css-triangle/ "Pure CSS Triangle"). However, because borders can't be percentages, this doesn't work with fractals. Instead we use a square, rotated pseudo elements (the \`div:before\` in the above css). The parent of the pseudo element is overflow hidden. Here's the full CSS. Feel free to email me if you want to know more. I may post more on this later.
 `
 
-const Serpinski = ({ depth = 4 }) => (
-  <div id="serpinski-triangle">
-    <Recurse3 depth={depth} />
-    <Recurse3 depth={depth} />
-    <Recurse3 depth={depth} />
-  </div>
-)
-
-const Recurse3 = ({ depth }) => (
-  <div>
+const Recurse3 = ({ depth, id }) => (
+  <div id={id}>
     {depth > 0 && (
       <>
         <Recurse3 depth={depth - 1} />
@@ -35,7 +27,7 @@ function Component() {
       <Markdown>{content}</Markdown>
       <Snippet src="/src/posts/css/_serpinski.html" />
       <Snippet src="/src/styles/_serpinski.css" />
-      <Serpinski />
+      <Recurse3 id="serpinski-triangle" depth={4} />
     </div>
   )
 }
