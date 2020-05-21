@@ -10,7 +10,7 @@ export default function Post(props) {
   const post = slug_map[slug]
   return post ? (
     <div className="blog-post">
-      <Hero src={post.image} />
+      <Hero src={post.hero} />
       <h1>{post.title}</h1>
       <post.Component />
     </div>

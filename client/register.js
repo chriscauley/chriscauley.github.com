@@ -1,5 +1,6 @@
 export const cat_map = {
   css: [],
+  misc: [],
 }
 
 export const tag_map = {}
