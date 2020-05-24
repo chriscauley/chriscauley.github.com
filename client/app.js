@@ -20,7 +20,7 @@ const App = () => {
           >
             <Sidebar />
           </div>
-          <div className={css.grid.col('w-2/3 lg:3/4 xl:w-5/6')}>
+          <div className={css.grid.col('md:w-2/3 lg:3/4 xl:w-5/6')}>
             <Route path="/post/:tag/:slug/" component={Post} />
             <Route exact path="/post/:tag/" component={TagDetail} />
           </div>
