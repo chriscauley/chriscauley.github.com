@@ -34,7 +34,7 @@ const Snippet = withSrc(Base)
 
 export default Snippet
 
-const BLOCK_RE = /\/\* (BLOCK|INCLUDE) ([\w\.]+)\s*\*\//
+const BLOCK_RE = /\/\* (BLOCK|INCLUDE) ([\w.]+)\s*\*\//
 
 const parseBlocks = (text) => {
   const lines = text.split('\n')
@@ -47,7 +47,7 @@ const parseBlocks = (text) => {
         action: match[1],
         type: match[2],
         lines: [],
-        index
+        index,
       }
       blocks.push(current_block)
       if (current_block.action === 'INCLUDE') {
@@ -58,7 +58,7 @@ const parseBlocks = (text) => {
       current_block.lines.push(line)
     }
   })
-  blocks.forEach(b => {
+  blocks.forEach((b) => {
     b.text = b.lines.join('\n').trim()
     b.Tag = TYPES[b.type]
   })
@@ -66,10 +66,18 @@ const parseBlocks = (text) => {
 }
 
 const TYPES = {
-  markdown: ({text}) => <Markdown>{text}</Markdown>,
-  python: ({text}) => <Highlight langugage={'python'}>{text}</Highlight>,
-  html: ({text}) => <Markdown>{text}</Markdown>,
-  include: ({path, _static}) => <Snippet src={_static(path)} />
+  markdown({ text }) {
+    return <Markdown>{text}</Markdown>
+  },
+  python({ text }) {
+    return <Highlight langugage={'python'}>{text}</Highlight>
+  },
+  html({ text }) {
+    return <Markdown>{text}</Markdown>
+  },
+  include({ path, _static }) {
+    return <Snippet src={_static(path)} />
+  },
 }
 
 export const BlocksPost = withSrc((props) => {
@@ -78,7 +86,7 @@ export const BlocksPost = withSrc((props) => {
     return <div className="loading-box text-4xl h-64" />
   }
   const blocks = parseBlocks(content)
-  return blocks.map( ({Tag, index, text, path}) => (
+  return blocks.map(({ Tag, index, text, path }) => (
     <div key={index} className="mb-8">
       <Tag text={text} _static={props._static} path={path} />
     </div>

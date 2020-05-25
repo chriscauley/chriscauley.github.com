@@ -11,5 +11,4 @@ const posts = [
   require('./intro-to-python/day-3'),
 ]
 
-console.log(posts[0])
 posts.map((p) => register(p.default))
