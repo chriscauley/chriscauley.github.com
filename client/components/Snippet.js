@@ -80,7 +80,7 @@ const TYPES = {
   },
 }
 
-export const BlocksPost = withSrc((props) => {
+export const BlocksSnippet = withSrc((props) => {
   const { loading, content } = props.api
   if (loading) {
     return <div className="loading-box text-4xl h-64" />
@@ -92,3 +92,7 @@ export const BlocksPost = withSrc((props) => {
     </div>
   ))
 })
+
+export function BlocksPost(props) {
+  return <BlocksPost src={props._static('blog.txt')} />
+}
