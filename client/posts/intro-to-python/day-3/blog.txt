@@ -1,7 +1,7 @@
 /* BLOCK markdown */
 # Dictionaries
 
-One of the most powerful data types in all of programming is the dictionary. Also known as a "linked-list" or "hash table" (or just object in javascript), the dictionary stores values according to keys. These both the keys and values can be any python object, but in practice they are limited to strings to avoid complications. Dictionaries are defined similar to lists in that they use commas to separate each key-value pair, however they use braces `\{}` instead of brackets `[]` and colons to link a key to a value. The general form is `\{key: value1, key2: value1 ...}`, but for clarity they are usually written on multiple lines.
+One of the most powerful data types in all of programming is the dictionary. Also known as a "linked-list" or "hash table" (or just object in javascript), the dictionary stores values according to keys. These both the keys and values can be any python object, but in practice they are limited to strings to avoid complications. Dictionaries are defined similar to lists in that they use commas to separate each key-value pair, however they use braces `{}` instead of brackets `[]` and colons to link a key to a value. The general form is `{key: value1, key2: value1 ...}`, but for clarity they are usually written on multiple lines.
 
 
 /* BLOCK python */

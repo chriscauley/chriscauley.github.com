@@ -38,8 +38,8 @@ If you do not see the `>>>` characters then you are most likely in the editor no
 
 In python, arithmatic uses the following operators:
 
-/* BLOCK html */
-<table class="table-striped">
+/* BLOCK raw */
+<table class="table table-striped">
   <tr>
     <td>2+2</td><td>addition</td>
   </tr>
@@ -79,9 +79,9 @@ As you can see, the spacing does not matter when writing these expressions. Typi
 
 Try each of the following by typing them into the interpreter.
 
-1. 6+4*10
+1. `6+4*10`
 
-2. (6+4)*10 (Compare this to #1, and note that Python uses parentheses just like you would in normal math to determine order of operations!)
+2. `(6+4)*10` (Compare this to #1, and note that Python uses parentheses just like you would in normal math to determine order of operations!)
 
 ## Variables
 
@@ -408,8 +408,8 @@ Here you can see that 16 is considered `True` as far as conditionals are concern
 
 Values can be compared using a number of boolean operators. All of the following examples evaluate as `True`.
 
-
-<table class="table-striped">
+/* BLOCK raw */
+<table class="table table-striped">
   <tr>
     <td>Operator</td><td>Example</td><td>How Example is Read</td>
   </tr>

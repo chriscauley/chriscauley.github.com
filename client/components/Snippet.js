@@ -74,12 +74,19 @@ const TYPES = {
     return <Highlight langugage={'python'}>{text}</Highlight>
   },
   html({ text }) {
-    return <Markdown>{text}</Markdown>
+    return <Highlight langugage={'html'}>{text}</Highlight>
+  },
+  raw({ text }) {
+    return <div dangerouslySetInnerHTML={{ __html: text }} />
   },
   include({ path, _static }) {
     return <Snippet src={_static(path)} />
   },
 }
+
+const Missing = (props) => (
+  <pre className="border-red border-4">{JSON.stringify(props)}</pre>
+)
 
 export const BlocksSnippet = withSrc((props) => {
   const { loading, content } = props.api
@@ -87,7 +94,7 @@ export const BlocksSnippet = withSrc((props) => {
     return <div className="loading-box text-4xl h-64" />
   }
   const blocks = parseBlocks(content)
-  return blocks.map(({ Tag, index, text, path }) => (
+  return blocks.map(({ Tag = Missing, index, text, path }) => (
     <div key={index} className="mb-8">
       <Tag text={text} _static={props._static} path={path} />
     </div>

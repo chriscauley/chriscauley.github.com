@@ -9,6 +9,8 @@ const posts = [
   require('./intro-to-python/day-1'),
   require('./intro-to-python/day-2'),
   require('./intro-to-python/day-3'),
+
+  require('./javascript/riot-tabs'),
 ]
 
 posts.map((p) => register(p.default))
