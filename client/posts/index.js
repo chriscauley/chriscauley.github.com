@@ -11,6 +11,7 @@ const posts = [
   require('./intro-to-python/day-3'),
 
   require('./javascript/riot-tabs'),
+  require('./javascript/scroll-header'),
 ]
 
 posts.map((p) => register(p.default))

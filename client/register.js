@@ -5,7 +5,10 @@ export const slug_map = {}
 export const listTags = () => Object.entries(tag_map)
 
 export const register = (post) => {
-  const { path, tags } = post
+  const { path, tags, draft } = post
+  if (draft && !process.env.DRAFT) {
+    return
+  }
   const [category, slug] = path.split('/')
   post._static = (s) => `/src/posts/${path}/${s}`
   Object.assign(post, {

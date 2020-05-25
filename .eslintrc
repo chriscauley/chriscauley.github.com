@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["client/posts/javascript/scroll-header/scroll.js"],
   "parser": "babel-eslint",
   "extends": [
     "prettier",
@@ -48,5 +49,6 @@
   "globals": {
     "document": false,
     "window": false,
+    "process": true,
   }
 }
