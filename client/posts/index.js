@@ -4,4 +4,6 @@ import './misc/curly-vortex'
 
 import './philosophy/wrong'
 
-import './classes/intro-to-programming-1'
+import './intro-to-python/day-1'
+import './intro-to-python/day-2'
+import './intro-to-python/day-3'

@@ -5,8 +5,8 @@ import { register } from '../../../register'
 
 register({
   Component: (props) => <BlocksPost src={props._static("blog.txt")} />,
-  path: "intro-to-python/day-1",
-  title: "Intro to Programming",
+  path: "intro-to-python/day-3",
+  title: "Intro to Programming - Day 3",
   tags: ["python", "txrx"],
-  date: "2014-04-15 12:00:00",
+  date: "2014-05-07 12:00:00",
 })
