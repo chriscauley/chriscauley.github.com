@@ -1,5 +1,6 @@
 import React from 'react'
-import Markdown from 'react-markdown'
+
+import Markdown from '../../components/Markdown'
 
 const md = `
 Most people are terrified of the possibility of being wrong. So much so that autocorrect (or as I playfully call it, automistake) refused to type the word "wrong" for five attempts when I was sending a text earlier today.

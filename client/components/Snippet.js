@@ -1,7 +1,8 @@
 import React from 'react'
 import RestHook from '@unrest/react-rest-hook'
-import Markdown from 'react-markdown'
 import Highlight from 'react-highlight.js'
+
+import Markdown from './Markdown'
 
 const processRequest = (request) => request.text()
 const prepData = (content) => ({ content })
@@ -94,5 +95,7 @@ export const BlocksSnippet = withSrc((props) => {
 })
 
 export function BlocksPost(props) {
-  return <BlocksPost src={props._static('blog.txt')} />
+  return (
+    <BlocksSnippet src={props._static('blog.txt')} _static={props._static} />
+  )
 }

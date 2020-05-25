@@ -1,6 +1,6 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import Snippet from '../../../components/Snippet'
+import Markdown from '../../../components/Markdown'
 import Serpinski from './Serpinski'
 import { Tabs } from '@unrest/core'
 import './styles.css'

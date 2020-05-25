@@ -1,6 +1,6 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import Snippet from '../../../components/Snippet'
+import Markdown from '../../../components/Markdown'
 import { Tabs } from '@unrest/core'
 
 const Demo = ({ ...props }) => <iframe className="w-full h-full" {...props} />

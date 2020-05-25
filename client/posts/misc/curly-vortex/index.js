@@ -1,7 +1,8 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import Highlight from 'react-highlight.js'
 import css from '@unrest/css'
+
+import Markdown from '../../../components/Markdown'
 
 const md1 = `I missed out on the [April Recreational Programming Group](https://apps.txrxlabs.org/blog/121/recreational-computer-programming-group-april-2014/) because I was at PyCon. He presented on a really cool texture genreator. It's written in Processing so I decided to see how easy it is to run it using [processing.js](http://processingjs.org/). TL;DR - Really easy.
 
