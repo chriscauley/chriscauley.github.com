@@ -1,6 +1,5 @@
 import React from 'react'
 import Markdown from 'react-markdown'
-import { register } from '../../register'
 
 const md = `
 Most people are terrified of the possibility of being wrong. So much so that autocorrect (or as I playfully call it, automistake) refused to type the word "wrong" for five attempts when I was sending a text earlier today.
@@ -15,10 +14,10 @@ I'm not sure which is worse, but personally I've resolved to exhault my mistakes
 
 const Component = () => <Markdown>{md}</Markdown>
 
-register({
+export default {
   Component,
   title: 'The Virtue of Being Wrong',
   path: 'philosophy/wrong.js',
   date: '2017-5-16',
   tags: ['epistemology'],
-})
+}

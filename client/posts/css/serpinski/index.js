@@ -1,6 +1,5 @@
 import React from 'react'
 import Markdown from 'react-markdown'
-import { register } from '../../../register'
 import Snippet from '../../../components/Snippet'
 import Serpinski from './Serpinski'
 import { Tabs } from '@unrest/core'
@@ -27,11 +26,11 @@ function Component({ _static }) {
   )
 }
 
-register({
+export default {
   Component,
   path: 'css/serpinski',
   description: 'A recursive triforce using nothing but HTML and CSS.',
   title: 'CSS Serpinski Triangle',
   date: '2014-03-12 00:00:00',
   tags: ['fractals'],
-})
+}

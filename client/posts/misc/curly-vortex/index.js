@@ -3,8 +3,6 @@ import Markdown from 'react-markdown'
 import Highlight from 'react-highlight.js'
 import css from '@unrest/css'
 
-import { register } from '../../../register'
-
 const md1 = `I missed out on the [April Recreational Programming Group](https://apps.txrxlabs.org/blog/121/recreational-computer-programming-group-april-2014/) because I was at PyCon. He presented on a really cool texture genreator. It's written in Processing so I decided to see how easy it is to run it using [processing.js](http://processingjs.org/). TL;DR - Really easy.
 
 The only necessary change I had to make to the code was to add a note to preload the image. Normally processing will execute assuming that the image file is local, but the DOM hasn't yet loaded the image. To do this you just add a comment to preload the image:`
@@ -57,10 +55,10 @@ class Component extends React.Component {
   }
 }
 
-register({
+export default {
   Component,
   path: 'misc/curly-vortex',
   title: "Smcameron's curly vortex",
   tags: ['txrx', 'processing'],
   date: '2014-04-19 12:00:00',
-})
+}

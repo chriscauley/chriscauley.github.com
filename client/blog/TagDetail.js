@@ -3,7 +3,7 @@ import Card from './Card'
 
 import { tag_map } from '../register'
 
-export default function TagegoryIndex(props) {
+export default function TagIndex(props) {
   const posts = tag_map[props.match.params.tag]
   if (!posts) {
     throw 'Tag Missing!'

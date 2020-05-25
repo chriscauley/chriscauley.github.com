@@ -1,6 +1,5 @@
 import React from 'react'
 import Markdown from 'react-markdown'
-import { register } from '../../../register'
 import Snippet from '../../../components/Snippet'
 import { Tabs } from '@unrest/core'
 
@@ -52,11 +51,11 @@ const Component = ({ _static }) => {
   )
 }
 
-register({
+export default {
   Component,
   description: "It's class-less, just like me.",
   path: 'css/golden',
   title: 'Pure CSS Golden Spiral',
   tags: ['fractals'],
   date: '2014-04-19 12:00:00',
-})
+}

@@ -1,9 +1,15 @@
-import './css/serpinski'
-import './css/golden'
-import './misc/curly-vortex'
+const { register } = require('../register')
+const posts = [
+  require('./css/serpinski'),
+  require('./css/golden'),
+  require('./misc/curly-vortex'),
 
-import './philosophy/wrong'
+  require('./philosophy/wrong'),
 
-import './intro-to-python/day-1'
-import './intro-to-python/day-2'
-import './intro-to-python/day-3'
+  require('./intro-to-python/day-1'),
+  require('./intro-to-python/day-2'),
+  require('./intro-to-python/day-3'),
+]
+
+console.log(posts[0])
+posts.map((p) => register(p.default))
