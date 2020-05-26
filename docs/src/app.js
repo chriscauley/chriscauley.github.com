@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, Route } from 'react-router-dom'
 import css from '@unrest/css'
-import TagDetail from './blog/TagDetail'
+import TagDetail, { Index } from './blog/TagDetail'
 import Post from './blog/Post'
 
 import Sidebar from './components/Sidebar'
@@ -21,8 +21,9 @@ const App = () => {
             <Sidebar />
           </div>
           <div className={css.grid.col('w-full md:w-2/3 lg:3/4 xl:w-5/6')}>
-            <Route path="/post/:tag/:slug/" component={Post} />
+            <Route exact path="/" component={Index} />
             <Route exact path="/post/:tag/" component={TagDetail} />
+            <Route path="/post/:tag/:slug/" component={Post} />
           </div>
         </div>
       </div>

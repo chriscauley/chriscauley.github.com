@@ -13,6 +13,16 @@ const posts = [
   require('./javascript/riot-tabs'),
   require('./javascript/scroll-header'),
   require('./javascript/yapc'),
+
+  require('./python/jinja_reader'),
+  require('./python/jinja_reader_update'),
+  require('./python/python-social-auth-tutorial'),
+
+  require('./physics/biocentrism'),
+  require('./physics/tired_light'),
+
+  require('./blog/hello-world'),
+  require('./unrest/comments-launched'),
 ]
 
 posts.map((p) => register(p.default))
