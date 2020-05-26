@@ -1,8 +1,12 @@
+import { sortBy } from 'lodash'
+
 export const tag_map = {}
 
 export const slug_map = {}
 
 export const listTags = () => Object.entries(tag_map)
+
+export const sort = (posts) => sortBy(posts, 'datetime')
 
 export const register = (post) => {
   const { path, tags, draft } = post
