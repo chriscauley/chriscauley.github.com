@@ -28,11 +28,14 @@ class Sphere(Point):
     A point with radius.
     """
     r = 0
+
     def __init__(self,x,y,z,r):
         super(Sphere,self).__init__(self,x,y,z)
         self.r = r
+
     def distance_to(self,second_sphere):
         center_distance = super(Sphere,self).distance_to(self,second_sphere)
         return center_distance - self.r - second_sphere.r
+
     def collides(self,second_sphere):
         return self.distance_to(second_sphere) < 0
