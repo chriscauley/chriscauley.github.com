@@ -12,6 +12,7 @@ const posts = [
 
   require('./javascript/riot-tabs'),
   require('./javascript/scroll-header'),
+  require('./javascript/yapc'),
 ]
 
 posts.map((p) => register(p.default))
