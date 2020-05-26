@@ -13,6 +13,10 @@ const posts = [
   require('./javascript/riot-tabs'),
   require('./javascript/scroll-header'),
   require('./javascript/yapc'),
+
+  require('./python/jinja_reader'),
+  require('./python/jinja_reader_update'),
+  require('./python/python-social-auth-tutorial'),
 ]
 
 posts.map((p) => register(p.default))
