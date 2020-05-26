@@ -1,6 +1,7 @@
 # node related
 .cache
 dist
+docs
 node_modules
 
 # django related
