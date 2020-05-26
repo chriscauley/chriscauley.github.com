@@ -7,8 +7,8 @@ import { listTags } from '../register'
 
 export default function SideBar() {
   return (
-    <div className="mb-4">
-      <h4>Tags</h4>
+    <div className="mb-4 p-4 rounded border mt-6">
+      <h4 className="mt-0">Tags</h4>
       <ul>
         {listTags().map(([slug, posts]) => (
           <li key={slug}>
