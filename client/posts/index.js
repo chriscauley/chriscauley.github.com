@@ -17,6 +17,9 @@ const posts = [
   require('./python/jinja_reader'),
   require('./python/jinja_reader_update'),
   require('./python/python-social-auth-tutorial'),
+
+  require('./physics/biocentrism'),
+  require('./physics/tired_light'),
 ]
 
 posts.map((p) => register(p.default))
