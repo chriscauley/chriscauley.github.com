@@ -13,7 +13,7 @@ server/settings/local.py
 .coverage
 .htmlcov
 __pycache__
-unrest
+./unrest/*
 ur
 
 # misc

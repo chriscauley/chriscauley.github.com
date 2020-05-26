@@ -22,6 +22,7 @@ const posts = [
   require('./physics/tired_light'),
 
   require('./blog/hello-world'),
+  require('./unrest/comments-launched'),
 ]
 
 posts.map((p) => register(p.default))
