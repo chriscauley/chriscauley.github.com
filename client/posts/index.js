@@ -20,6 +20,8 @@ const posts = [
 
   require('./physics/biocentrism'),
   require('./physics/tired_light'),
+
+  require('./blog/hello-world'),
 ]
 
 posts.map((p) => register(p.default))

@@ -76,6 +76,9 @@ const TYPES = {
   html({ text }) {
     return <Highlight langugage={'html'}>{text}</Highlight>
   },
+  bash({ text }) {
+    return <Highlight langugage={'bash'}>{text}</Highlight>
+  },
   raw({ text }) {
     return <div dangerouslySetInnerHTML={{ __html: text }} />
   },
