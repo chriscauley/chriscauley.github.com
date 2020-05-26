@@ -1,0 +1,41 @@
+.app-content {
+  @apply py-8
+}
+
+.blog-post {
+  p {
+    @apply mb-6 leading-relaxed text-lg;
+  }
+}
+
+.react-tabs__tab-panel {
+  @apply border-b mt-2 mb-8 overflow-auto;
+  height: 400px;
+}
+
+.blog-image__hero,
+.blog-image__thumbnail {
+  transition: 0.25s;
+  overflow: hidden;
+  width: 100%;
+  img {
+    left: 50%;
+    opacity: 1;
+    min-width: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+  &.loading { opacity: 0; }
+}
+
+.blog-image__hero {
+  padding-top: 25%;
+  position: relative;
+  &.loading {
+    padding-top: 0;
+  }
+}
+
+.blog-image__thumbnail img {
+}
