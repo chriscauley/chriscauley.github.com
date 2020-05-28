@@ -1,10 +1,10 @@
-/* BLOCKS markdown */
+/* BLOCK markdown */
 I recently had to set up Twitter and Google authentication for a django project I worked on and found the documentation to be a bit lacking for [Python Social Auth][1], so I thought I would document a quick set up here for anyone who is interested. We will need all of the following settings:
 
 [1]: http://psa.matiasaguirre.net/docs/index.html
 
 
-/* BLOCKS python */
+/* BLOCK python */
 #Step 2
 INSTALLED_APPS = (
   ...
@@ -37,7 +37,7 @@ SOCIAL_AUTH_TWITTER_SECRET = ""
 SOCIAL_AUTH_FACEBOOK_KEY = ""
 SOCIAL_AUTH_FACEBOOK_SECRET = ""
 
-/* BLOCKS markdown */
+/* BLOCK markdown */
 1) `pip install python-social-auth` or what ever you prefer
 
 2) Add all of the settings above and run `python manage.py syncdb` to set up the appropriate tables. I will only be talking about twitter and google, but there are dozens of other options [as seen in the docs][1] or on the [projects github page][2].
@@ -59,16 +59,14 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ""
 [3]: https://console.developers.google.com/project
 
 
-<pre><code class="html">
+/* BLOCK html */
 AUTHORIZED JAVASCRIPT ORIGINS
 http://example.com
 
 AUTHORIZED REDIRECT URI
 http://example.com/complete/google-oauth2/
 
-
-
-/* BLOCKS markdown */
+/* BLOCK markdown */
 * I had no trouble with the above, but everything I read online said the above was the most tricky step. Verify the protocol (http vs https) domain, subdomain, port (none above, but my dev server is :8013) and trailing slashes.
 
 * Now You have keys! `SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET` is your "CLIENT SECRET" on the Googly Plus and `SOCIAL_AUTH_GOOGLE_OAUTH2_KEY` is your "CLIENT ID"
@@ -95,16 +93,16 @@ http://example.com/complete/google-oauth2/
 [5]: https://developers.facebook.com/apps/?action=create
 
 
-/* BLOCKS python */
+/* BLOCK python */
 SOCIAL_AUTH_FACEBOOK_KEY = ""
 SOCIAL_AUTH_FACEBOOK_SECRET = ""
 
 
-/* BLOCKS markdown */
+/* BLOCK markdown */
 6) Add the links to your header template. My full login section looks like this now:
 
 
-<pre><code class="html">{% filter escape %}{% raw %}
+/* BLOCK html */
     <li>
       <a href="{% url 'login' %}">
         <i class="fa fa-user"></i> Login with Username
@@ -124,16 +122,15 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ""
         <i class="fa fa-facebook"></i> Login with Facebook
       </a>
     </li>
-{% endraw %}{% endfilter %}
 
 
-/* BLOCKS markdown */
+/* BLOCK markdown */
 7) Add "pipelines" to settings:
 
 This is optional but I found that most of the customizations I wanted were already programmed in what python-social-auth calls "pipelines". Specifically I wanted 'social.pipeline.social_auth.associate_by_email', which will connect an account to a prexisting account if the email matches. This is not recommended if you do not trust the OAuth service to validate email addresses, but since I'm only using Google, Facebook, Twitter, and GitHub, I'm not so worried about it.
 
 
-/* BLOCKS python */
+/* BLOCK python */
 PIPELINE = (
   'social.pipeline.social_auth.social_details',
   'social.pipeline.social_auth.social_uid',
@@ -147,6 +144,3 @@ PIPELINE = (
   'social.pipeline.social_auth.load_extra_data',
   'social.pipeline.user.user_details'
 )
-
-
-</body>
