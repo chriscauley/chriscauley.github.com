@@ -7,6 +7,7 @@ import Post from './blog/Post'
 
 import Sidebar from './components/Sidebar'
 import Nav from './components/Nav'
+import sudoku from './sudoku'
 import './posts'
 
 const App = () => {
@@ -24,6 +25,8 @@ const App = () => {
             <Route exact path="/" component={Index} />
             <Route exact path="/post/:tag/" component={TagDetail} />
             <Route path="/post/:tag/:slug/" component={Post} />
+            <Route exact path="/sudoku/ctc/" component={sudoku.Index} />
+            <Route exact path="/sudoku/ctc/:slug" component={sudoku.CTC} />
           </div>
         </div>
       </div>
