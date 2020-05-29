@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import React, { useState } from 'react'
 import { debounce } from 'lodash'
 import { Link } from 'react-router-dom'
@@ -30,7 +31,8 @@ const FB_URL =
 function Board(options) {
   if (options.ctc) {
     this.sudoku = this.sudoku = []
-    options.ctc.cells.forEach((row) =>
+    const { cells } = options.ctc
+    cells.forEach((row) =>
       row.forEach((cell) => {
         this.sudoku.push(cell.value)
       }),
@@ -124,40 +126,39 @@ class CTC extends React.Component {
 
   xy2className = (xy, extra = '') => `cell cell-${extra} x-${xy[0]} y-${xy[1]}`
 
-  _move = debounce((pxy) => this.setState({ hover: this.pxy2xy(pxy) }), 50, {
+  _move = debounce((pxy) => this.setState({ hover: this.pxy2index(pxy) }), 50, {
     maxWait: 50,
   })
 
   render() {
-    const entry2cell = ([index, value]) => ({
-      xy: this.index2xy(index),
-      value,
-    })
     const { sudoku } = this.props.board
     const { hover, selected, answer } = this.state
+    const getClassName = ({ xy, hover, selected }) =>
+      classnames(`cell x-${xy[0]} y-${xy[1]}`, { hover, selected })
+    const cells = sudoku.map((question, index) => {
+      return {
+        index,
+        xy: this.index2xy(index),
+        question,
+        selected: selected[index],
+        answer: answer[index],
+      }
+    })
+    if (cells[hover]) {
+      cells[hover].hover = true
+    }
     return (
       <div className="board">
-        {Object.keys(selected)
-          .map(this.index2xy)
-          .map((xy) => (
-            <div className={this.xy2className(xy, 'selected')} key={xy} />
-          ))}
-        {hover && <div className={this.xy2className(hover, 'hover')} />}
-        {Object.entries(answer)
-          .map(entry2cell)
-          .map((cell) => (
-            <div
-              className={this.xy2className(cell.xy, 'answer')}
-              key={cell.value}
-            >
-              {cell.value}
+        <div className="sudoku">
+          {cells.map((cell) => (
+            <div key={cell.index} className={getClassName(cell)}>
+              {cell.question !== undefined && (
+                <span className="question">{cell.question}</span>
+              )}
+              {cell.answer !== undefined && (
+                <span className="answer">{cell.answer}</span>
+              )}
             </div>
-          ))}
-        <div className="flex sudoku">
-          {sudoku.map((num, i) => (
-            <span className={`cell cell-${i}`} key={i}>
-              {num}
-            </span>
           ))}
         </div>
         <div

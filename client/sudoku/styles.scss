@@ -1,5 +1,5 @@
-$hover: #888;
-$selected: #ff88ff;
+$hover: #333;
+$selected: #ffff88;
 
 .board {
   padding-top: 100%;
@@ -24,47 +24,11 @@ $selected: #ff88ff;
       border: 1px black solid;
       display: flex;
       justify-content: center;
-      position: static;
-    }
-    .cell- {
-      &0, &1, &2, &3, &4, &5, &6, &7, &8,
-      &27, &28, &29, &30, &31, &32, &33, &34, &35,
-      &54, &55, &56, &57, &58, &59, &60, &61, &62 {
-        border-top-width: 3px;
+      &.hover {
+        box-shadow: inset gray 0 0 0 3px;
       }
-      &0, &3, &6,
-      &9, &12, &15,
-      &18, &21, &24,
-      &27, &30, &33,
-      &36, &39, &42,
-      &45, &48, &51,
-      &54, &57, &60,
-      &63, &66, &69,
-      &72, &75, &78 {
-        border-left-width: 3px;
-      }
-      &8, &17, &26, &35, &44, &53, &62, &71, &80 {
-        border-right-width: 3px;
-      }
-      &72, &73, &74, &75, &76, &77, &78, &79, &80 {
-        border-bottom-width: 3px;
-      }
-    }
-  }
-  .cell {
-    position: absolute;
-    &.cell-hover {
-      box-shadow: inset 1px 1px 5px $hover;
-    }
-    &.cell-selected {
-      background: $selected;
-    }
-    @for $i from 0 through 8 {
-      &.x-#{$i} {
-        left: $i * 100% * 0.11111111111;
-      }
-      &.y-#{$i} {
-        top: $i * 100% * 0.11111111111;
+      &.selected {
+        background: $selected;
       }
     }
   }
