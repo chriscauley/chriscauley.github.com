@@ -15,6 +15,7 @@ export const getMode = ({ ctrlKey, shiftKey }, _default = 'answer') => {
 }
 
 const row = 'flex mb-4 flex-wrap'
+const noop = () => {}
 
 class Controls extends React.Component {
   state = {}
@@ -32,7 +33,7 @@ class Controls extends React.Component {
 
   keyupdown = ({ shiftKey, ctrlKey }) => this.setState({ shiftKey, ctrlKey })
   render() {
-    const { keys, onClick = () => {} } = this.props
+    const { keys, onClick = noop, sendKey = noop } = this.props
     const mode = getMode(this.state, this.props.mode)
     const modes = ['answer', 'corner', 'centre', 'colour']
     return (
@@ -50,6 +51,7 @@ class Controls extends React.Component {
               className={css.button.dark('mr-2 mode-' + mode)}
               data-key={key}
               key={key}
+              onClick={() => sendKey(key, mode)}
             />
           ))}
         </div>

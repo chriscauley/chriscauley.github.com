@@ -48,19 +48,22 @@ class CTC extends React.Component {
 
   mouseup = () => this.setState({ dragging: false, removing: false })
   keydown = (e) => {
+    const value = KEY_MAP[e.key] || e.key
+    e.preventDefault()
+    const mode = getMode(e, this.state.mode)
+    this.sendKey(value, mode)
+  }
+
+  sendKey = (value, mode) => {
     const { selected } = this.state
     const indexes = Object.keys(selected)
-    let mode = getMode(e, this.state.mode)
-    const value = KEY_MAP[e.key] || e.key
     if (value === 'Delete' || value === 'Backspace') {
       mode = 'delete'
     } else if (!this.allowed_keys.includes(value)) {
       return
     }
-    e.preventDefault()
     this.props.game.actions.doAction({ mode, indexes, value })
   }
-
   onMouseMove = (e) => this._bouncemove([e.clientX, e.clientY])
 
   mousedown = (e) => {
@@ -113,6 +116,7 @@ class CTC extends React.Component {
           keys={this.allowed_keys}
           onClick={this.setMode}
           mode={this.state.mode}
+          sendKey={this.sendKey}
         />
         <div className="board">
           <div className="sudoku">
