@@ -71,6 +71,7 @@ class CTC extends React.Component {
     this.setState({ hover, selected })
   }
   _bouncemove = debounce(this._move, 25, { maxWait: 25 })
+  setMode = (mode) => () => this.setState({ mode })
 
   render() {
     const { hover, selected } = this.state
@@ -85,7 +86,11 @@ class CTC extends React.Component {
     }
     return (
       <>
-        <Controls keys={this.allowed_keys} />
+        <Controls
+          keys={this.allowed_keys}
+          onClick={this.setMode}
+          mode={this.state.mode}
+        />
         <div className="board">
           <div className="sudoku">
             {cells.map((cell) => (

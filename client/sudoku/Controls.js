@@ -32,14 +32,14 @@ class Controls extends React.Component {
 
   keyupdown = ({ shiftKey, ctrlKey }) => this.setState({ shiftKey, ctrlKey })
   render() {
-    const { keys } = this.props
+    const { keys, onClick = () => {} } = this.props
     const mode = getMode(this.state, this.props.mode)
     const modes = ['answer', 'corner', 'centre', 'colour']
     return (
       <div className="Controls">
         <div className={row}>
           {modes.map((m) => (
-            <div className={btn(mode === m)} key={m}>
+            <div className={btn(mode === m)} key={m} onClick={onClick(m)}>
               {m}
             </div>
           ))}
