@@ -8,10 +8,17 @@ import Controls, { getMode } from './Controls'
 
 const clickRef = React.createRef()
 
-const getClassName = ({ xy, hover, selected, answer, colour }) =>
-  classnames(`cell x-${xy[0]} y-${xy[1]} colour-${colour}`, {
-    hover,
+const getClassName = ({
+  xy,
+  hover,
+  selected,
+  selectedNeighbors,
+  answer,
+  colour,
+}) =>
+  classnames(`cell x-${xy[0]} y-${xy[1]} colour-${colour}`, selectedNeighbors, {
     selected,
+    hover,
     answer,
   })
 

@@ -1,6 +1,5 @@
 @use 'sass:map';
 
-
 $pallet: (
   0: #000,
   1: #FFF,
@@ -12,9 +11,12 @@ $pallet: (
   7: #8FF,
   8: #8F8,
   9: #F00,
-  "selected": #dd3,
+  "selected": #888,
   "hover": #666,
 );
+
+$selected: 5px solid map.get($pallet, "selected");
+$darkenSelected: 15%;
 
 .board {
   padding-top: 100%;
@@ -51,18 +53,31 @@ $pallet: (
       &.hover {
         box-shadow: inset map.get($pallet, "hover") 0 0 0 3px;
       }
-      &.selected {
-        background: map.get($pallet, "selected");
-      }
       &.answer {
         @apply text-blue-500
+      }
+      &.selected--9 {
+        border-top: $selected;
+      }
+      &.selected-1 {
+        border-right: $selected;
+      }
+      &.selected-9 {
+        border-bottom: $selected;
+      }
+      &.selected--1 {
+        border-left: $selected;
       }
     }
   }
 }
 
 .board .cell {
+  background: map.get($pallet, 1);
   position: relative;
+  &.selected {
+    background: darken(map.get($pallet, 1), $darkenSelected);
+  }
   .corner, .centre {
     @apply text-blue-500;
     font-size: 0.35em;
@@ -73,6 +88,9 @@ $pallet: (
   @for $i from 0 through 9 {
     &.colour-#{$i} {
       background: map.get($pallet, $i);
+      &.selected {
+        background: darken(map.get($pallet, $i), $darkenSelected);
+      }
     }
   }
 }

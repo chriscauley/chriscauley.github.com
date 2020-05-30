@@ -111,11 +111,20 @@ export default class Board {
       xy: this.geo.index2xy(index),
       question,
       selected: selected[index],
+      selectedNeighbors: this.getSelectedNeighbors(index, selected),
       answer: this.answer[index],
       centre: this.centre[index] || [],
       corner: this.corner[index] || [],
       colour: this.colour[index] || [],
     }))
+  getSelectedNeighbors = (index, selected) => {
+    if (!selected[index]) {
+      return []
+    }
+    return [-this.geo.W, 1, this.geo.W, -1].map((dindex) =>
+      selected[index + dindex] ? 0 : `selected-${dindex}`,
+    )
+  }
 }
 
 const arrayToggle = (values, value) => {
