@@ -50,15 +50,20 @@ const fetchCTC = (slug) =>
     .then((data) => new Board({ ctc: data }))
 
 const Index = () => {
-  const maps = ['j62Rm8qq9j']
+  const maps = {
+    j62Rm8qq9j: 'Simple',
+    H9Jr7gQHtm: 'Hardest',
+  }
   return (
     <div>
       <h2>Select a map</h2>
       <ul>
-        {maps.map((slug) => (
-          <Link key={slug} to={slug}>
-            {slug}
-          </Link>
+        {Object.entries(maps).map(([slug, name]) => (
+          <li key={slug}>
+            <Link to={slug}>
+              {name} ({slug})
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
