@@ -55,7 +55,7 @@ $darkenSelected: 15%;
         box-shadow: inset map.get($pallet, "hover") 0 0 0 3px;
       }
       &.answer {
-        @apply text-blue-500
+        @apply text-blue-700
       }
 
       &.selected-1:before,
@@ -92,13 +92,13 @@ $darkenSelected: 15%;
   background: map.get($pallet, 1);
   position: relative;
   &.selected {
-    border: 0;
+    border-color: rgba(0,0,0, 0.25);
     background: darken(map.get($pallet, 1), $darkenSelected);
     z-index: 1;
   }
   .corner, .centre {
-    @apply text-blue-500;
-    font-size: 0.35em;
+    @apply text-blue-700;
+    font-size: 0.3em;
   }
   .corner {
     @apply top-0 left-0 absolute;
