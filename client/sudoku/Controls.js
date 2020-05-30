@@ -3,7 +3,7 @@ import css from '@unrest/css'
 
 const btn = (active) => css.button[active ? 'dark' : 'light']('mr-2')
 
-const getMode = ({ ctrlKey, shiftKey }) => {
+export const getMode = ({ ctrlKey, shiftKey }, _default = 'answer') => {
   if (ctrlKey && shiftKey) {
     return 'colour'
   } else if (ctrlKey) {
@@ -11,7 +11,7 @@ const getMode = ({ ctrlKey, shiftKey }) => {
   } else if (shiftKey) {
     return 'corner'
   }
-  return 'normal'
+  return _default
 }
 
 const row = 'flex mb-4 flex-wrap'
@@ -32,8 +32,9 @@ class Controls extends React.Component {
 
   keyupdown = ({ shiftKey, ctrlKey }) => this.setState({ shiftKey, ctrlKey })
   render() {
-    const { keys, mode = getMode(this.state) } = this.props
-    const modes = ['normal', 'corner', 'centre', 'colour']
+    const { keys } = this.props
+    const mode = getMode(this.state, this.props.mode)
+    const modes = ['answer', 'corner', 'centre', 'colour']
     return (
       <div className="Controls">
         <div className={row}>

@@ -42,6 +42,7 @@ export default class Board {
       corner: {},
       centre: {},
       colour: {},
+      actions: [],
     })
     this.geo = new Geo({ W: 9 })
     if (options.ctc && !this.sudoku) {
@@ -50,6 +51,29 @@ export default class Board {
       cells.forEach((row) =>
         row.forEach((cell) => this.sudoku.push(cell.value)),
       )
+    }
+  }
+
+  doAction(action) {
+    const { mode, indexes, value } = action
+    console.log(action)
+    this.actions.push(action)
+    if (mode === 'delete') {
+      // delete is not affected by the mode
+      delete action.value
+      this.deleteCells(indexes)
+    } else if (mode === 'centre' || mode === 'corner') {
+      this._toggle(mode, indexes, value)
+    } else if (mode === 'colour') {
+      // color always just sets value
+      indexes.map((index) => (this.colour[index] = value))
+    } else if (mode === 'answer') {
+      indexes.map((index) => {
+        // cannot write to sudoku squares
+        if (this.sudoku[index] === undefined) {
+          this.answer[index] = value
+        }
+      })
     }
   }
 
@@ -67,21 +91,6 @@ export default class Board {
         this[mode] = arrayToggle(this[mode] || [], value)
       }
     })
-  }
-
-  toggleCentre = (indexes, value) => this._toggle('centre', indexes, value)
-  toggleColour = (indexes, value) => this._toggle('colour', indexes, value)
-  toggleAnswer(indexes, value) {
-    indexes.map((index) => {
-      // cannot write to sudoku squares
-      if (this.sudoku[index] === undefined) {
-        this.answer[index] = value
-      }
-    })
-  }
-  toggleColour(indexes, value) {
-    // color always just sets value
-    indexes.map((index) => (this.colour[index] = value))
   }
 
   deleteCells(indexes) {

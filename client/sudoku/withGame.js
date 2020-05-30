@@ -17,6 +17,10 @@ const actions = {
   startGame: (store, { ctc }) => {
     store.setState({ board: new Board({ ctc }) })
   },
+  doAction: (store, action) => {
+    store.state.board.doAction(action)
+    store.setState({ rando: Math.random() })
+  },
 }
 
 const _withGame = ConfigHook('game', { schema, uiSchema, actions })

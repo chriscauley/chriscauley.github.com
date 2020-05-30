@@ -4,7 +4,7 @@ import { debounce } from 'lodash'
 
 import Index from './Index'
 import withGame from './withGame'
-import Controls from './Controls'
+import Controls, { getMode } from './Controls'
 
 const clickRef = React.createRef()
 
@@ -26,19 +26,17 @@ class CTC extends React.Component {
 
   mouseup = () => this.setState({ dragging: false, removing: false })
   keydown = (e) => {
-    const { board } = this.props.game
     const { selected } = this.state
+    const indexes = Object.keys(selected)
     // const valid = true
-    const key = e.key
-    if (key === 'Delete' || key === 'Backspace') {
-      board.deleteCells(Object.keys(selected))
-      return this.setState({ rando: Math.random() })
-    }
-    if (!this.allowed_keys.includes(key)) {
+    let mode = getMode(e, this.state.mode)
+    const value = e.key
+    if (value === 'Delete' || value === 'Backspace') {
+      mode = 'delete'
+    } else if (!this.allowed_keys.includes(value)) {
       return
     }
-    board.toggleAnswer(Object.keys(selected), key)
-    this.setState({ rando: Math.random() })
+    this.props.game.actions.doAction({ mode, indexes, value })
   }
 
   onMouseMove = (e) => this._bouncemove([e.clientX, e.clientY])
