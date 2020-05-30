@@ -15,7 +15,8 @@ $pallet: (
   "hover": #666,
 );
 
-$selected: 5px solid map.get($pallet, "selected");
+$sel: 4px;
+$selected: $sel solid map.get($pallet, "selected");
 $darkenSelected: 15%;
 
 .board {
@@ -56,17 +57,32 @@ $darkenSelected: 15%;
       &.answer {
         @apply text-blue-500
       }
-      &.selected--9 {
-        border-top: $selected;
+
+      &.selected-1:before,
+      &.selected--1:before,
+      &.selected--9:after,
+      &.selected-9:after {
+        box-sizing: content-box;
+        content: "";
+        left: 0;
+        margin: - $sel;
+        position: absolute;
+        top:0;
+        border: $sel solid transparent;
+        width: 100%;
+        height: 100%;
       }
-      &.selected-1 {
+      &.selected-1:before {
         border-right: $selected;
       }
-      &.selected-9 {
-        border-bottom: $selected;
-      }
-      &.selected--1 {
+      &.selected--1:before {
         border-left: $selected;
+      }
+      &.selected--9:after {
+        border-top: $selected;
+      }
+      &.selected-9:after {
+        border-bottom: $selected;
       }
     }
   }
@@ -76,7 +92,9 @@ $darkenSelected: 15%;
   background: map.get($pallet, 1);
   position: relative;
   &.selected {
+    border: 0;
     background: darken(map.get($pallet, 1), $darkenSelected);
+    z-index: 1;
   }
   .corner, .centre {
     @apply text-blue-500;
