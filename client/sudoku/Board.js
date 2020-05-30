@@ -1,5 +1,40 @@
 import { defaults, pick } from 'lodash'
 
+class Geo {
+  constructor(options) {
+    if (!options.W) {
+      throw 'Geo requires a W (width)'
+    }
+    this.setSize(options)
+    // html element for mouse event calculations
+    // can be undefined during initialization and set later
+    this.element = options.element
+  }
+
+  setSize({ W, H = W }) {
+    this.W = W
+    this.H = H
+    this.AREA = W * H
+  }
+
+  pxy2xy = (pxy) => {
+    if (!this.element) {
+      throw 'Element is not set'
+    }
+    const { left, top, height } = this.element.getBoundingClientRect()
+    const w_px = height / this.W
+    const h_px = height / this.H
+    return [
+      Math.floor((pxy[0] - left) / h_px),
+      Math.floor((pxy[1] - top) / w_px),
+    ]
+  }
+
+  pxy2index = (pxy) => this.xy2index(this.pxy2xy(pxy))
+  xy2index = (xy) => xy[0] + this.W * xy[1]
+  index2xy = (index) => [index % this.W, Math.floor(index / this.W)]
+}
+
 export default class Board {
   constructor(options) {
     defaults(this, options, {
@@ -8,8 +43,7 @@ export default class Board {
       centre: {},
       colour: {},
     })
-    this.W = this.H = 9
-    this.AREA = this.W * this.H
+    this.geo = new Geo({ W: 9 })
     if (options.ctc && !this.sudoku) {
       this.sudoku = this.sudoku = []
       const { cells } = options.ctc
@@ -54,10 +88,10 @@ export default class Board {
     indexes.map((index) => delete this.answer[index])
   }
 
-  toCells = (selected, index2xy) =>
+  toCells = (selected) =>
     this.sudoku.map((question, index) => ({
       index,
-      xy: index2xy(index),
+      xy: this.geo.index2xy(index),
       question,
       selected: selected[index],
       answer: this.answer[index],

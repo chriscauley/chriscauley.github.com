@@ -6,8 +6,6 @@ import Index from './Index'
 import withGame from './withGame'
 import Controls from './Controls'
 
-const SIZE = 9
-
 const clickRef = React.createRef()
 
 class CTC extends React.Component {
@@ -43,23 +41,10 @@ class CTC extends React.Component {
     this.setState({ rando: Math.random() })
   }
 
-  pxy2xy = (pxy) => {
-    const { left, top, height } = clickRef.current.getBoundingClientRect()
-    const p_size = height / SIZE
-    return [
-      Math.floor((pxy[0] - left) / p_size),
-      Math.floor((pxy[1] - top) / p_size),
-    ]
-  }
-
-  pxy2index = (pxy) => this.xy2index(this.pxy2xy(pxy))
-  xy2index = (xy) => xy[0] + SIZE * xy[1]
-  index2xy = (index) => [index % SIZE, Math.floor(index / SIZE)]
-
   onMouseMove = (e) => this._bouncemove([e.clientX, e.clientY])
 
   mousedown = (e) => {
-    const index = this.pxy2index([e.clientX, e.clientY])
+    const index = this.geo.pxy2index([e.clientX, e.clientY])
     let { selected } = this.state
     let removing = selected[index]
     if (e.ctrlKey) {
@@ -75,10 +60,8 @@ class CTC extends React.Component {
     this.setState({ dragging: true, removing, selected })
   }
 
-  xy2className = (xy, extra = '') => `cell cell-${extra} x-${xy[0]} y-${xy[1]}`
-
   _move = (pxy) => {
-    const hover = this.pxy2index(pxy)
+    const hover = this.geo.pxy2index(pxy)
     const { selected, dragging, removing } = this.state
     if (dragging) {
       if (removing) {
@@ -93,9 +76,12 @@ class CTC extends React.Component {
 
   render() {
     const { hover, selected } = this.state
+    const { board } = this.props.game
+    this.geo = board.geo
+    board.geo.element = clickRef.current
     const getClassName = ({ xy, hover, selected }) =>
       classnames(`cell x-${xy[0]} y-${xy[1]}`, { hover, selected })
-    const cells = this.props.game.board.toCells(selected, this.index2xy)
+    const cells = board.toCells(selected)
     if (cells[hover]) {
       cells[hover].hover = true
     }
