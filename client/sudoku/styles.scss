@@ -18,12 +18,20 @@ $selected: #ffff88;
     width: 11.1111%;
   }
   .sudoku {
-    border: 1px solid black;
+    border: solid black;
+    border-width: 3px 2px 2px 3px;
     .cell {
       align-items: center;
-      border: 1px black solid;
+      border: black solid;
+      border-width: 0 1px 1px 0;
       display: flex;
       justify-content: center;
+      &.x-2, &.x-5 {
+        border-right-width: 3px;
+      }
+      &.y-2, &.y-5 {
+        border-bottom-width: 3px;
+      }
       &.hover {
         box-shadow: inset gray 0 0 0 3px;
       }

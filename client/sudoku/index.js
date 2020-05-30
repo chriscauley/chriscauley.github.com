@@ -76,17 +76,19 @@ class CTC extends React.Component {
   state = {
     answer: {},
     selected: {},
-    down: {},
   }
   constructor(props) {
     super(props)
-    document.addEventListener('keydown', this.keydown)
+    this.allowed = '1234567890'
+    this.listeners = ['keydown', 'mousedown', 'mouseup']
+    this.listeners.forEach((s) => document.addEventListener(s, this[s]))
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keydown)
+    this.listeners.forEach((s) => document.removeEventListener(s, this[s]))
   }
 
+  mouseup = () => this.setState({ dragging: false, removing: false })
   keydown = (e) => {
     const { selected, answer } = this.state
     // const valid = true
@@ -111,29 +113,40 @@ class CTC extends React.Component {
   xy2index = (xy) => xy[0] + SIZE * xy[1]
   index2xy = (index) => [index % SIZE, Math.floor(index / SIZE)]
 
-  onMouseMove = (e) => this._move([e.clientX, e.clientY])
+  onMouseMove = (e) => this._bouncemove([e.clientX, e.clientY])
 
-  onClick = (e) => {
+  mousedown = (e) => {
     const index = this.pxy2index([e.clientX, e.clientY])
-    const { selected } = this.state
-    if (!e.ctrlKey) {
-      return this.setState({
-        selected: selected[index] ? {} : { [index]: true },
-      })
-    }
-    if (selected[index]) {
-      delete selected[index]
+    let { selected } = this.state
+    let removing = selected[index]
+    if (e.ctrlKey) {
+      if (removing) {
+        delete selected[index]
+      } else {
+        selected[index] = true
+      }
     } else {
-      selected[index] = true
+      selected = { [index]: true }
+      removing = false
     }
-    this.setState({ selected })
+    this.setState({ dragging: true, removing, selected })
   }
 
   xy2className = (xy, extra = '') => `cell cell-${extra} x-${xy[0]} y-${xy[1]}`
 
-  _move = debounce((pxy) => this.setState({ hover: this.pxy2index(pxy) }), 50, {
-    maxWait: 50,
-  })
+  _move = (pxy) => {
+    const hover = this.pxy2index(pxy)
+    const { selected, dragging, removing } = this.state
+    if (dragging) {
+      if (removing) {
+        delete selected[hover]
+      } else {
+        selected[hover] = true
+      }
+    }
+    this.setState({ hover, selected })
+  }
+  _bouncemove = debounce(this._move, 50, { maxWait: 50 })
 
   render() {
     const { sudoku } = this.props.board
@@ -168,7 +181,6 @@ class CTC extends React.Component {
         </div>
         <div
           className="clickMask"
-          onClick={this.onClick}
           onMouseMove={this.onMouseMove}
           ref={clickRef}
         />
