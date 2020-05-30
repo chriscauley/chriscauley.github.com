@@ -1,9 +1,9 @@
 import React from 'react'
 import css from '@unrest/css'
 
-const btn = active => css.button[active ? 'dark' : 'light']('mr-4')
+const btn = (active) => css.button[active ? 'dark' : 'light']('mr-2')
 
-const getMode = ({ctrlKey, shiftKey}) => {
+const getMode = ({ ctrlKey, shiftKey }) => {
   if (ctrlKey && shiftKey) {
     return 'colour'
   } else if (ctrlKey) {
@@ -25,24 +25,31 @@ class Controls extends React.Component {
   }
 
   componentWillUnmount() {
-    this.listeners.forEach((s) => document.removeEventListener(s, this.keyupdown))
+    this.listeners.forEach((s) =>
+      document.removeEventListener(s, this.keyupdown),
+    )
   }
 
-  keyupdown = ({shiftKey, ctrlKey}) => this.setState({shiftKey, ctrlKey})
+  keyupdown = ({ shiftKey, ctrlKey }) => this.setState({ shiftKey, ctrlKey })
   render() {
-    const { ctrlKey, shiftKey } = this.state
-    const { colours, keys, mode=getMode(this.state) } = this.props
+    const { keys, mode = getMode(this.state) } = this.props
     const modes = ['normal', 'corner', 'centre', 'colour']
     return (
       <div className="Controls">
         <div className={row}>
-          {modes.map(m => (
-            <div className={btn(mode === m)} key={m}>{m}</div>
+          {modes.map((m) => (
+            <div className={btn(mode === m)} key={m}>
+              {m}
+            </div>
           ))}
         </div>
         <div className={row}>
-          {keys.map(key => (
-            <div className={css.button.dark('mr-4 mode-'+mode)} data-key={key} key={key} />
+          {keys.map((key) => (
+            <div
+              className={css.button.dark('mr-2 mode-' + mode)}
+              data-key={key}
+              key={key}
+            />
           ))}
         </div>
       </div>

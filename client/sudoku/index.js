@@ -1,74 +1,12 @@
 import classnames from 'classnames'
-import React, { useState } from 'react'
+import React from 'react'
 import { debounce } from 'lodash'
-import { Link } from 'react-router-dom'
-import './styles.scss'
+
+import Index from './Index'
+import withGame from './withGame'
+import Controls from './Controls'
 
 const SIZE = 9
-
-const toggleObject = (object, key, value = true) => {
-  if (object[key] === value) {
-    delete object[key]
-  } else {
-    object[key] = value
-  }
-  return value
-}
-
-const withCTC = (Component) => (props) => {
-  const { slug } = props.match.params
-  const [state, setState] = useState({})
-  if (!state[slug]) {
-    fetchCTC(slug).then((data) => setState({ [slug]: data }))
-    return null
-  }
-  return <Component board={state[slug]} />
-}
-
-const FB_URL =
-  'https://firebasestorage.googleapis.com/v0/b/sudoku-sandbox.appspot.com/o/'
-
-function Board(options) {
-  if (options.ctc) {
-    this.sudoku = this.sudoku = []
-    const { cells } = options.ctc
-    cells.forEach((row) =>
-      row.forEach((cell) => {
-        this.sudoku.push(cell.value)
-      }),
-    )
-  }
-}
-
-const fetchCTC = (slug) =>
-  fetch(`${FB_URL}${slug}`)
-    .then((r) => r.json())
-    .then((data) =>
-      fetch(`${FB_URL}${slug}?alt=media&token=${data.downloadTokens}`),
-    )
-    .then((r) => r.json())
-    .then((data) => new Board({ ctc: data }))
-
-const Index = () => {
-  const maps = {
-    j62Rm8qq9j: 'Simple',
-    H9Jr7gQHtm: 'Hardest',
-  }
-  return (
-    <div>
-      <h2>Select a map</h2>
-      <ul>
-        {Object.entries(maps).map(([slug, name]) => (
-          <li key={slug}>
-            <Link to={slug}>
-              {name} ({slug})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
 
 const clickRef = React.createRef()
 
@@ -79,7 +17,7 @@ class CTC extends React.Component {
   }
   constructor(props) {
     super(props)
-    this.allowed = '1234567890'
+    this.allowed_keys = '1234567890'.split('')
     this.listeners = ['keydown', 'mousedown', 'mouseup']
     this.listeners.forEach((s) => document.addEventListener(s, this[s]))
   }
@@ -90,14 +28,19 @@ class CTC extends React.Component {
 
   mouseup = () => this.setState({ dragging: false, removing: false })
   keydown = (e) => {
-    const { selected, answer } = this.state
+    const { board } = this.props.game
+    const { selected } = this.state
     // const valid = true
-    const key = parseInt(e.key)
-    if (isNaN(key)) {
+    const key = e.key
+    if (key === 'Delete' || key === 'Backspace') {
+      board.deleteCells(Object.keys(selected))
+      return this.setState({ rando: Math.random() })
+    }
+    if (!this.allowed_keys.includes(key)) {
       return
     }
-    Object.keys(selected).forEach((index) => toggleObject(answer, index, key))
-    this.setState({ answer })
+    board.toggleAnswer(Object.keys(selected), key)
+    this.setState({ rando: Math.random() })
   }
 
   pxy2xy = (pxy) => {
@@ -146,52 +89,46 @@ class CTC extends React.Component {
     }
     this.setState({ hover, selected })
   }
-  _bouncemove = debounce(this._move, 50, { maxWait: 50 })
+  _bouncemove = debounce(this._move, 25, { maxWait: 25 })
 
   render() {
-    const { sudoku } = this.props.board
-    const { hover, selected, answer } = this.state
+    const { hover, selected } = this.state
     const getClassName = ({ xy, hover, selected }) =>
       classnames(`cell x-${xy[0]} y-${xy[1]}`, { hover, selected })
-    const cells = sudoku.map((question, index) => {
-      return {
-        index,
-        xy: this.index2xy(index),
-        question,
-        selected: selected[index],
-        answer: answer[index],
-      }
-    })
+    const cells = this.props.game.board.toCells(selected, this.index2xy)
     if (cells[hover]) {
       cells[hover].hover = true
     }
     return (
-      <div className="board">
-        <div className="sudoku">
-          {cells.map((cell) => (
-            <div key={cell.index} className={getClassName(cell)}>
-              {cell.question !== undefined && (
-                <span className="question">{cell.question}</span>
-              )}
-              {cell.answer !== undefined && (
-                <span className="answer">{cell.answer}</span>
-              )}
-            </div>
-          ))}
+      <>
+        <Controls keys={this.allowed_keys} />
+        <div className="board">
+          <div className="sudoku">
+            {cells.map((cell) => (
+              <div key={cell.index} className={getClassName(cell)}>
+                {cell.question !== undefined && (
+                  <span className="question">{cell.question}</span>
+                )}
+                {cell.answer !== undefined && (
+                  <span className="answer">{cell.answer}</span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div
+            className="clickMask"
+            onMouseMove={this.onMouseMove}
+            ref={clickRef}
+          />
         </div>
-        <div
-          className="clickMask"
-          onMouseMove={this.onMouseMove}
-          ref={clickRef}
-        />
-      </div>
+      </>
     )
   }
 }
 
 export default {
   Index,
-  CTC: withCTC(CTC),
+  CTC: withGame(CTC),
   path: 'sudoku/ctc',
   datetime: '2020-05-29T13:37:57.094Z',
 }

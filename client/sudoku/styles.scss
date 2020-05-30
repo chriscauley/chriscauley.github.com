@@ -57,6 +57,13 @@ $colors: (
   }
 }
 
+.board {
+  font-size: 10vw;
+  @media (min-aspect-ratio: 1/1) {
+    font-size: 10vh;
+  }
+}
+
 .Controls {
   $smaller: 0.75rem;
   $wh: 40px;
