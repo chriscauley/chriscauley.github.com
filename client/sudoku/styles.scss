@@ -1,14 +1,14 @@
 @use 'sass:map';
 
 
-$colors: (
+$pallet: (
   0: #000,
   1: #FFF,
   2: #888,
   3: #F88,
   4: #FF8,
   5: #F8F,
-  6: #88F,
+  6: #44F,
   7: #8FF,
   8: #8F8,
   9: #F00,
@@ -30,6 +30,7 @@ $colors: (
   }
   .cell {
     height: 11.1111%;
+    user-select: none;
     width: 11.1111%;
   }
   .sudoku {
@@ -48,11 +49,30 @@ $colors: (
         border-bottom-width: 3px;
       }
       &.hover {
-        box-shadow: inset map.get($colors, "hover") 0 0 0 3px;
+        box-shadow: inset map.get($pallet, "hover") 0 0 0 3px;
       }
       &.selected {
-        background: map.get($colors, "selected");
+        background: map.get($pallet, "selected");
       }
+      &.answer {
+        @apply text-blue-500
+      }
+    }
+  }
+}
+
+.board .cell {
+  position: relative;
+  .corner, .centre {
+    @apply text-blue-500;
+    font-size: 0.35em;
+  }
+  .corner {
+    @apply top-0 left-0 absolute;
+  }
+  @for $i from 0 through 9 {
+    &.colour-#{$i} {
+      background: map.get($pallet, $i);
     }
   }
 }
@@ -73,7 +93,7 @@ $colors: (
     }
     [data-key="#{$i}"].mode-colour:before {
       content: "";
-      background: map.get($colors, $i);
+      background: map.get($pallet, $i);
     }
   }
   [data-key] {

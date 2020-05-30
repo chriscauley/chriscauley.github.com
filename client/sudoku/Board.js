@@ -56,7 +56,6 @@ export default class Board {
 
   doAction(action) {
     const { mode, indexes, value } = action
-    console.log(action)
     this.actions.push(action)
     if (mode === 'delete') {
       // delete is not affected by the mode
@@ -88,13 +87,22 @@ export default class Board {
         this.sudoku[index] === undefined &&
         this.answer[index] === undefined
       ) {
-        this[mode] = arrayToggle(this[mode] || [], value)
+        this[mode][index] = arrayToggle(this[mode][index] || [], value)
       }
     })
   }
 
   deleteCells(indexes) {
-    indexes.map((index) => delete this.answer[index])
+    let layers = ['answer', 'centre', 'corner']
+    const first_match = layers.find((layer) =>
+      indexes.find((index) => this[layer][index] !== undefined),
+    )
+    if (!first_match) {
+      layers = ['colour']
+    }
+    layers.forEach((layer) =>
+      indexes.forEach((index) => delete this[layer][index]),
+    )
   }
 
   toCells = (selected) =>
@@ -104,9 +112,9 @@ export default class Board {
       question,
       selected: selected[index],
       answer: this.answer[index],
-      centre: this.centre[index],
-      corner: this.corner[index],
-      colour: this.colour[index],
+      centre: this.centre[index] || [],
+      corner: this.corner[index] || [],
+      colour: this.colour[index] || [],
     }))
 }
 

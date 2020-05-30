@@ -36,7 +36,7 @@ class Controls extends React.Component {
     const mode = getMode(this.state, this.props.mode)
     const modes = ['answer', 'corner', 'centre', 'colour']
     return (
-      <div className="Controls">
+      <div className="Controls" onClick={(e) => e.stopPropagation()}>
         <div className={row}>
           {modes.map((m) => (
             <div className={btn(mode === m)} key={m} onClick={onClick(m)}>

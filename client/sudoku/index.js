@@ -8,6 +8,21 @@ import Controls, { getMode } from './Controls'
 
 const clickRef = React.createRef()
 
+const getClassName = ({ xy, hover, selected, answer, colour }) =>
+  classnames(`cell x-${xy[0]} y-${xy[1]} colour-${colour}`, {
+    hover,
+    selected,
+    answer,
+  })
+
+const KEY_MAP = {}
+
+')!@#$%^&*('.split('').forEach((key, i) => (KEY_MAP[key] = i.toString()))
+
+'abcdefghijklmnopqrstuvwxyz'
+  .split('')
+  .forEach((key) => (KEY_MAP[key.toUpperCase()] = key))
+
 class CTC extends React.Component {
   state = {
     answer: {},
@@ -28,14 +43,14 @@ class CTC extends React.Component {
   keydown = (e) => {
     const { selected } = this.state
     const indexes = Object.keys(selected)
-    // const valid = true
     let mode = getMode(e, this.state.mode)
-    const value = e.key
+    const value = KEY_MAP[e.key] || e.key
     if (value === 'Delete' || value === 'Backspace') {
       mode = 'delete'
     } else if (!this.allowed_keys.includes(value)) {
       return
     }
+    e.preventDefault()
     this.props.game.actions.doAction({ mode, indexes, value })
   }
 
@@ -43,6 +58,9 @@ class CTC extends React.Component {
 
   mousedown = (e) => {
     const index = this.geo.pxy2index([e.clientX, e.clientY])
+    if (e.target.closest('.Controls')) {
+      return
+    }
     let { selected } = this.state
     let removing = selected[index]
     if (e.ctrlKey) {
@@ -78,8 +96,6 @@ class CTC extends React.Component {
     const { board } = this.props.game
     this.geo = board.geo
     board.geo.element = clickRef.current
-    const getClassName = ({ xy, hover, selected }) =>
-      classnames(`cell x-${xy[0]} y-${xy[1]}`, { hover, selected })
     const cells = board.toCells(selected)
     if (cells[hover]) {
       cells[hover].hover = true
@@ -95,6 +111,12 @@ class CTC extends React.Component {
           <div className="sudoku">
             {cells.map((cell) => (
               <div key={cell.index} className={getClassName(cell)}>
+                {cell.question === undefined && cell.answer === undefined && (
+                  <>
+                    <div className="corner">{cell.corner.map((n) => n)}</div>
+                    <div className="centre">{cell.centre.map((n) => n)}</div>
+                  </>
+                )}
                 {cell.question !== undefined && (
                   <span className="question">{cell.question}</span>
                 )}
