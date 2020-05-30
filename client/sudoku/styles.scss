@@ -54,10 +54,6 @@ $darkenSelected: 15%;
       &.hover {
         box-shadow: inset map.get($pallet, "hover") 0 0 0 3px;
       }
-      &.answer {
-        @apply text-blue-700
-      }
-
       &.selected-1:before,
       &.selected--1:before,
       &.selected--9:after,
@@ -96,10 +92,6 @@ $darkenSelected: 15%;
     background: darken(map.get($pallet, 1), $darkenSelected);
     z-index: 1;
   }
-  .corner, .centre {
-    @apply text-blue-700;
-    font-size: 0.3em;
-  }
   .corner {
     @apply top-0 left-0 absolute;
   }
@@ -110,6 +102,23 @@ $darkenSelected: 15%;
         background: darken(map.get($pallet, $i), $darkenSelected);
       }
     }
+  }
+}
+
+.board .cell {
+  &.answer,
+  .corner, .centre {
+    @apply text-blue-700;
+  }
+  &.colour-0, &.colour-6 {
+    color: white;
+    &.answer,
+    .corner, .centre {
+      @apply text-gray-400;
+    }
+  }
+  .corner, .centre {
+    font-size: 0.3em;
   }
 }
 

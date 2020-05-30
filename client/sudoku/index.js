@@ -49,7 +49,9 @@ class CTC extends React.Component {
   mouseup = () => this.setState({ dragging: false, removing: false })
   keydown = (e) => {
     const value = KEY_MAP[e.key] || e.key
-    e.preventDefault()
+    if (this.allowed_keys.includes(value)) {
+      e.preventDefault()
+    }
     const mode = getMode(e, this.state.mode)
     this.sendKey(value, mode)
   }
