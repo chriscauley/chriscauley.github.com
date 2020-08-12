@@ -1,8 +1,9 @@
 import React from 'react'
-import Snippet from '../../../components/Snippet'
+
 import Markdown from '../../../components/Markdown'
+import Snippet from '../../../components/Snippet'
+import Tabs from '../../../components/Tabs'
 import Serpinski from './Serpinski'
-import { Tabs } from '@unrest/core'
 import './styles.css'
 
 const content = `

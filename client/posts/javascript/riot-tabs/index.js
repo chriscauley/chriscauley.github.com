@@ -1,4 +1,5 @@
 import { BlocksPost } from '../../../components/Snippet'
+import Tabs from '../../../components/Tabs'
 
 export default {
   Component: BlocksPost,
